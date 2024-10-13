@@ -3,7 +3,7 @@
     "path": "~/Dropbox/courses_and_workshops/Bioacoustics/PR_BIR_2024/_quarto.yml",
     "project_path": "_quarto.yml",
     "type": "yaml",
-    "hash": "2293347154",
+    "hash": "2586757145",
     "contents": "",
     "dirty": false,
     "created": 1728833171279.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "6,42",
-        "scrollLine": "5"
+        "cursorPosition": "11,21",
+        "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1728833331,
+    "lastKnownWriteTime": 1728843812,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1728833331483,
+    "last_content_update": 1728843812824,
     "read_only": false,
     "read_only_alternatives": []
 }

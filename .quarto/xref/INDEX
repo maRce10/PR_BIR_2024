@@ -22,5 +22,29 @@
   },
   "sound.qmd": {
     "sound.html": "bdc7c8ab"
+  },
+  "quality_checks.qmd": {
+    "quality_checks.html": "bb82d125"
+  },
+  "get_online_recordings (cin-3660's conflicted copy 2024-05-23).qmd": {
+    "get_online_recordings (cin-3660's conflicted copy 2024-05-23).html": "c9adaca6"
+  },
+  "instructor.qmd": {
+    "instructor.html": "c5592193"
+  },
+  "program.qmd": {
+    "program.html": "3a144839"
+  },
+  "get_online_recordings.qmd": {
+    "get_online_recordings.html": "bb6fe049"
+  },
+  "seewave.qmd": {
+    "seewave.html": "6db2a99c"
+  },
+  "comparing_methods.qmd": {
+    "comparing_methods.html": "3759fa83"
+  },
+  "measure_structure_green_hermit.qmd": {
+    "measure_structure_green_hermit.html": "b70eef70"
   }
 }

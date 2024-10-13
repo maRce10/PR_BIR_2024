@@ -9,6 +9,7 @@ website:
   site-url: https://marce10.github.io/BIAC04/
   repo-url: https://github.com/maRce10/BIAC04/
   navbar:
+    background: white
     right:
       - icon: github
         href: https://github.com/maRce10/BIAC04/
