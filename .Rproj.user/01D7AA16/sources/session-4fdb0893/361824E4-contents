@@ -6,13 +6,13 @@ website:
   page-footer: Copyright 2024 | <a href="https://marce10.github.io">Marcelo Araya-Salas</a>
   title: "Bioacoustic data analysis with R 2024"
   search: true
-  site-url: https://marce10.github.io/BIAC04/
-  repo-url: https://github.com/maRce10/BIAC04/
+  site-url: https://marce10.github.io/PR_BIR_2024/
+  repo-url: https://github.com/maRce10/PR_BIR_2024/
   navbar:
     background: white
     right:
       - icon: github
-        href: https://github.com/maRce10/BIAC04/
+        href: https://github.com/maRce10/PR_BIR_2024/
         aria-label: GitHub
     left:
       - href: index.qmd

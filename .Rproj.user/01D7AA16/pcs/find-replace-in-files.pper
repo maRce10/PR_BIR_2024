@@ -1,6 +1,6 @@
 {
     "dialog-state": {
-        "query": "confirm",
+        "query": "marce10.github.io/BIAC04",
         "path": "",
         "regex": false,
         "caseSensitive": true,
@@ -27,10 +27,10 @@
             "*.yml",
             "*.yaml"
         ],
-        "useGitGrep": false,
+        "useGitGrep": true,
         "excludeGitIgnore": true,
         "excludeFilePatterns": [],
-        "resultsCount": 12,
+        "resultsCount": 2,
         "errorCount": 0,
         "replaceErrors": "",
         "projectRelative": true

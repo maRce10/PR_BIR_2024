@@ -565,7 +565,7 @@ An extended selection table with response calls can be read from github as follo
 
 ```{r, eval = FALSE, echo = FALSE}
 
-download.file(url = "https://github.com/maRce10/BIAC04/raw/master/examples/response_calls.RDS", 
+download.file(url = "https://github.com/maRce10/PR_BIR_2024/raw/master/examples/response_calls.RDS", 
  destfile = "./examples/response_calls.RDS")
 
 response_calls <- readRDS("./examples/response_calls.RDS")
@@ -581,7 +581,7 @@ sp_resp_by_call <- song_analysis(response_calls, song_colm = "call")
 
 ```{r, eval = FALSE}
 
-download.file(url = "https://github.com/maRce10/BIAC04/raw/master/examples/response_calls.RDS", 
+download.file(url = "https://github.com/maRce10/PR_BIR_2024/raw/master/examples/response_calls.RDS", 
  destfile = "./examples/response_calls.RDS")
 
 response_calls <- readRDS("./examples/response_calls.RDS")
