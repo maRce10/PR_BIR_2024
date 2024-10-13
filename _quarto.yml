@@ -1,0 +1,81 @@
+project:
+  type: website
+  output-dir: docs
+  
+website:
+  page-footer: Copyright 2024 | <a href="https://marce10.github.io">Marcelo Araya-Salas</a>
+  title: "Bioacoustic data analysis with R 2024"
+  search: true
+  site-url: https://marce10.github.io/BIAC04/
+  repo-url: https://github.com/maRce10/BIAC04/
+  navbar:
+    right:
+      - icon: github
+        href: https://github.com/maRce10/BIAC04/
+        aria-label: GitHub
+    left:
+      - href: index.qmd
+        text: Home
+      - text: "Program"
+        href: program.qmd
+      - text: "Tutorials"
+        menu:
+        - text: "Introduction"
+          href: introduction.qmd
+        - text: "R basics"
+          href: r_basics.qmd
+        - text: "Sound"
+          href: sound.qmd
+        - text: "Spectrograms"
+          href: spectrograms.qmd
+        - text: "seewave"
+          href: seewave.qmd
+        - text: "Annotations"
+          href: annotations.qmd
+        - text: "ohun: automatic detection"
+          href: ohun.qmd
+        - text: "Intro to warbleR"
+          href: intro_to_warbler.qmd 
+        - text: "Measure acoustic structure"
+          href: measure_acoustic_structure.qmd
+        - text: "Comparing measuring methods"
+          href: comparing_methods.qmd        
+        - text: "Quality checks"
+          href: quality_checks.qmd
+        - text: "Measure structure on XC recordings"
+          href: measure_structure_green_hermit.qmd
+      - text: "Colab notebooks"
+        menu: 
+          - text: "General"
+            href: "https://colab.research.google.com/drive/1KKmndmWB73ZDLfT0eVBArEZX4eVGsVMc?usp=sharing"
+          - text: "dynaSpec"
+            href: "https://colab.research.google.com/drive/1t3Wn9OifcZTvxOMVNmz9dF25vnzU3_Fr?usp=sharing"
+          - text: "ohun"
+            href: "https://colab.research.google.com/drive/115nmxxe1pdSqshTW2ABlBNddhVPpCV6F?usp=sharing"       
+      - text: "Course prep"
+        href: course_prep.qmd
+      - text: "Code sharing"
+        href: "https://codefile.io/f/inMsojTFoN"
+      - text: "Instructor"
+        href: instructor.qmd
+
+toc: true
+toc-depth: 2
+toc-location: left
+toc-title: Contents
+number-sections: true
+code-line-numbers: false
+highlight-style: pygments
+code-overflow: wrap
+code-copy: true
+date: today
+lang: en
+format:
+  html:
+    css: styles.css
+    toc: true
+    df-print: kable
+    code-fold: show
+    code-tools: false
+    link-external-icon: false
+    link-external-newwindow: true

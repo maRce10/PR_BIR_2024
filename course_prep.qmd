@@ -1,0 +1,124 @@
+---
+date: "`r Sys.Date()`"
+format:
+  html:
+    toc: false
+    code-fold: false
+---
+
+ 
+
+```{r, echo= FALSE}
+
+knitr::opts_chunk$set(eval = FALSE)
+
+```
+
+1)  Install or update R on the computer you will use during the course (<https://cran.r-project.org>). I assume that you already have it installed, but try to update it if you have a R version \< 4.0.0. You can find which R version you have by running this in the R console:
+
+```{r}
+
+version$version.string
+
+```
+
+2)  Update all R packages if you already had R installed (`r emo::ji("warning")` this step can take a long time to run `r emo::ji("warning")`):
+
+```{r}
+
+update.packages(ask = FALSE)
+```
+
+3)  Install or update the RStudio interface (<https://www.rstudio.com/products/rstudio/download/>, choose the free version). Optional but advised.
+
+4)  Make a directory called "BIAC04", this will be your working directory for the course.
+
+5)  Open RStudio and select the tab "Tools" then "Global Options" (last option). Select the "Code" option, then select the box for "Soft-wrap R source files".
+
+6)  Also in Rstudio: Select the "Pane Layout" option and move "Source" to the top left pane and "Console" to the top right pane. For those of you unfamiliar with RStudio, the source is your script, where you save code in a physical file (usually .R script) and the console prints the output of the code you run from the source. You can write code in the console, but it will not be saved in a physical file. This layout allocates more screen space to the most useful panes. Hit "Apply" and "Ok".
+
+7)  Also in Rstudio: Go back up to the "File" tab and select "New Project", then select the "BIAC04" directory.
+
+8)  Now in the R console in Rstudio: Run the following code to install the latest developmental versions (from github) of warbleR, Rraven, PhenotypeSpace, ohun, baRulho and dynaSpec (remove the packages first if you have them installed already).
+
+```{r}
+
+# package to install other packages from github
+if (!requireNamespace("sketchy"))
+  install.packages("sketchy") 
+
+# load package
+library(sketchy)
+
+# install/load packages
+load_packages(packages = c(
+  "pracma",
+  "Sim.DiffProc",
+  "bioacoustics",
+  "phonTools",
+  "soundgen",
+  "audio",
+  github = "maRce10/warbleR",
+  github = "maRce10/Rraven",
+  github = "maRce10/ohun",
+  github = "maRce10/suwo",
+  github = "maRce10/baRulho",
+  github = "maRce10/dynaSpec"
+ )
+)
+
+```
+
+*if you have any issue installing 'bioacoustics' take a look at this fix: <https://stackoverflow.com/questions/53092646/unable-to-install-warbler-package-using-mac-os>*
+
+9) We also need to install the package PhenotypeSpace, which requires some dependencies that have been archived in CRAN. So to install it please first download this two package tar.gz files and install them manually:
+
+  - [rgeos_0.6-4.tar.gz](https://cran.r-project.org/src/contrib/Archive/rgeos/rgeos_0.6-4.tar.gz)
+
+  - [spatstat.core_2.4-4.tar.gz](https://cran.r-project.org/src/contrib/Archive/spatstat.core/spatstat.core_2.4-4.tar.gz)
+
+Once you have install them you can install PhenotypeSpace:
+
+```{r}
+
+# install/load package
+load_packages(packages = c(github = "maRce10/PhenotypeSpace"))
+
+```
+
+
+10) warbleR depends heavily on the R package seewave. Seewave may require some extra steps to get installed. Take a look at seewave's website for further help: [http://rug.mnhn.fr/seewave](http://rug.mnhn.fr/seewave/) (and then go to "installation" and scroll down)
+
+11) Install Raven lite from [ttp://ravensoundsoftware.com/raven-pricing/](http://ravensoundsoftware.com/raven-pricing/)(scroll down to "Raven Lite 2.0" and click on "Order Free Raven Lite 2.0 License"). Ignore if you have any Raven version already installed.
+
+12) Install ffmpeg (only needed for dynaSpec package, not critical):
+
+<https://ffmpeg.org/download.html>
+
+take a look at this link if you have issues installing ffmpeg on windows:
+
+<https://github.com/maRce10/dynaSpec/issues/3>
+
+13) Install Audacity (not critical, you can use Adobe Audition instead):
+
+<https://www.audacityteam.org/download/>
+
+14) Install SOX. It can be downloaded from here (not critical but could be useful): [http://sox.sourceforge.net](http://sox.sourceforge.net/) (*Not critical*)
+
+15) Install FLAC. It can be downloaded from here (also not critical): [https://xiph.org/flac/download.html](http://sox.sourceforge.net/) (*Not critical*)
+
+16) Note that you can also run the code using google colab. Take a look at this notebook: [https://colab.research.google.com/](https://colab.research.google.com/drive/1KKmndmWB73ZDLfT0eVBArEZX4eVGsVMc?usp=sharing#scrollTo=05bsvm_f7UNt)
+
+ 
+
+::: {.alert .alert-warning}
+**A few tips to make sure you will take full advantage of the course**:
+
+-   Set aside a physical space, hopefully as isolated as possible from external stimuli
+-   Use headphones/earphones to avoid any interference from echoes or external noises
+-   Ideally, read the materials ahead of time (I know! it's time comsuming)
+-   Make sure you have anything you need before the start of the class
+-   Be ready a few minutes before the start of the class
+-   Try to focus as much as possible in the course, close other programs or unnecessary internet browser tabs (i.e. instagram, twitter, etc). This will also make the computer more efficient (less likely to get slow)
+-   Comment your code
+:::

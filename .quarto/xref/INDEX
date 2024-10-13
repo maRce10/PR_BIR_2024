@@ -1,0 +1,26 @@
+{
+  "index.qmd": {
+    "index.html": "813cd3cb"
+  },
+  "course_prep.qmd": {
+    "course_prep.html": "c83bcb72"
+  },
+  "introduction.qmd": {
+    "introduction.html": "3ebca553"
+  },
+  "intro_to_warbler.qmd": {
+    "intro_to_warbler.html": "0a964827"
+  },
+  "measure_acoustic_structure.qmd": {
+    "measure_acoustic_structure.html": "244dfafb"
+  },
+  "404.qmd": {
+    "404.html": "bf9e3da1"
+  },
+  "annotations.qmd": {
+    "annotations.html": "167c73d2"
+  },
+  "sound.qmd": {
+    "sound.html": "bdc7c8ab"
+  }
+}
