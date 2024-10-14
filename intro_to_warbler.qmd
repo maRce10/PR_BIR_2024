@@ -38,7 +38,7 @@ The [warbleR](https://cran.r-project.org/package=warbleR) package is intended to
 
 The package offers functions for:
 
--   Browse and download recordings of [Xeno ‐ Canto](http://xeno-canto.org/)
+-   Browse and download recordings of [Xeno ‐ Canto](https://xeno-canto.org/)
 -   Explore, organize and manipulate multiple sound files
 -   Detect signals automatically (in frequency and time)
 -   Create spectrograms of complete recordings or individual signals
@@ -53,7 +53,7 @@ Most functions allow the parallelization of tasks, which distributes the tasks a
 
 **warbleR** is a young package (officially published in 2017) currently in a maturation stage:
 
-<img src="images/lifecycle.jpeg" alt="life cycle" width="700"/>
+<img src="images/lifecycle.jpeg" alt="life cycle" width="80%"/>
 
  
 
@@ -258,11 +258,11 @@ all.equal(ext_st, ext_st5)
 
  
 
-The 'wave' objects can be read individually using `read_wave()`, a wrapper for the `readWave()` function of **tuneR**, which can handle extended selection tables:
+The 'wave' objects can be read individually using `read_sound_file()`, a wrapper for the `readWave()` function of **tuneR**, which can handle extended selection tables:
 
 ```{r extn_sel_8.21}
 
-wv1 <- read_wave(X = ext_st, index = 3, from = 0, to = 0.37)
+wv1 <- read_sound_file(X = ext_st, index = 3, from = 0, to = 0.37)
 
 ```
 
@@ -286,7 +286,7 @@ par(mfrow = c(3, 2), mar = rep(0, 4))
 
 for(i in 1:6){
   
-  wv <- read_wave(X = ext_st, index = i, from = 0.05, to = 0.32)
+  wv <- read_sound_file(X = ext_st, index = i, from = 0.05, to = 0.32)
 
   spectro(wv, wl = 150, grid = FALSE, scale = FALSE, axisX = FALSE,
           axisY = FALSE, ovlp = 90)
@@ -297,7 +297,7 @@ for(i in 1:6){
 
  
 
-The `read_wave()` function requires the selection table, as well as the row index (i.e. the row number) to be able to read the 'wave' objects. It can also read a regular 'wave' file if the path is provided.
+The `read_sound_file()` function requires the selection table, as well as the row index (i.e. the row number) to be able to read the 'wave' objects. It can also read a regular 'wave' file if the path is provided.
 
 Note that other functions that modify data frames are likely to delete the attributes in which the 'wave' objects and metadata are stored. For example, the merge and the extended selection box will remove its attributes:
 
@@ -523,7 +523,7 @@ bs_snr
 
 ### Sharing acoustic data
 
-This new object class allows to share complete data sets, including acoustic data. For example, the following code downloads a subset of the data used in [Araya-Salas *et al* (2017)](https://marceloarayasalas.weebly.com/uploads/2/5/5/2/25524573/araya-salas_smith-vidaurre___webster_2017._table_s1._recording_metadata.xlsx) (can also be downloaded from [here](https://marceloarayasalas.weebly.com/uploads/2/5/5/2/25524573/extended.selection.%20table.araya-salas.et.al.2017.bioacoustics.100.sels.rds)):
+This new object class allows to share complete data sets, including acoustic data. For example, the following code downloads a subset of the data used in [Araya-Salas *et al* (2019)](https://marce10.github.io/uploads/araya-salas-2019-a.pdf) (can also be downloaded from  [Araya-Salas *et al* (2017)](https://github.com/maRce10/PR_BIR_2024/raw/master/data/extended.selection.table.araya-salas.et.al.2017.bioacoustics.100.sels.rds):
 
 ```{r extn.sel_19, eval = FALSE}
 
@@ -565,7 +565,7 @@ par(mfrow = c(3, 2), mar = rep(0, 4))
 
 for(i in 1:6){
   
-  wv <- read_wave(X = dat, index = i, from = 0.17, to = 0.4)
+  wv <- read_sound_file(X = dat, index = i, from = 0.17, to = 0.4)
 
   spectro(wv, wl = 250, grid = FALSE, scale = FALSE, axisX = FALSE,
           axisY = FALSE, ovlp = 90, flim = c(0, 12), 
@@ -651,7 +651,7 @@ We can group **warbleR** functions according to the bioacoustic analysis stages.
 
 ### Get and prepare recordings
 
-The `query_xc()` function allows you to search and download sounds from the free access database [Xeno-Canto](http://xeno-canto.org/). You can also convert .mp3 files to .wav, change the sampling rate of the files and correct corrupt files, among other functions.
+The `query_xc()` function allows you to search and download sounds from the free access database [Xeno-Canto](https://xeno-canto.org/). You can also convert .mp3 files to .wav, change the sampling rate of the files and correct corrupt files, among other functions.
 
 ```{r, echo = FALSE}
 
@@ -849,7 +849,7 @@ kbl
 
 ## References
 
-1.  Araya-Salas M, G Smith-Vidaurre & M Webster. (2017). Assessing the effect of sound file compression and background noise on measures of acoustic signal structure. Bioacoustics 4622, 1--17
+1.  Araya-Salas M, G Smith-Vidaurre & M Webster. (2019). Assessing the effect of sound file compression and background noise on measures of acoustic signal structure. Bioacoustics 4622, 1--17
 2.  Araya-Salas M, Smith-Vidaurre G (2017) warbleR: An R package to streamline analysis of animal acoustic signals. Methods Ecol Evol 8:184--191.
 
  

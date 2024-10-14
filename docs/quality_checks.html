@@ -2,11 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-10-13">
+<meta name="dcterms.date" content="2024-10-14">
 
 <title>Bioacoustic data analysis with R 2024 - Quality checks for recordings and annotations</title>
 <style>
@@ -222,7 +222,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/maRce10/BIAC04/"> <i class="bi bi-github" role="img" aria-label="GitHub">
+    <a class="nav-link" href="https://github.com/maRce10/PR_BIR_2024/"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -261,7 +261,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Quality checks for recordings and annotations</h1>
+<h1 class="title"><font size="7"><b>Quality checks for recordings and annotations</b></font></h1>
 </div>
 
 
@@ -272,7 +272,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 13, 2024</p>
+      <p class="date">October 14, 2024</p>
     </div>
   </div>
   
@@ -339,6 +339,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="cell">
 <div class="cell-output-display">
+<div>
 <table class="table table-striped table-sm small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
@@ -410,6 +411,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 
 
+</div>
 </div>
 </div>
 <p>&nbsp;</p>
@@ -427,6 +429,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="cell">
 <div class="cell-output-display">
+<div>
 <table class="table table-striped table-sm small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
@@ -498,6 +501,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 
 
+</div>
 </div>
 </div>
 <p>&nbsp;</p>
@@ -512,6 +516,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="cell">
 <div class="cell-output-display">
+<div>
 <table class="table table-striped table-sm small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
@@ -583,6 +588,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 
 
+</div>
 </div>
 </div>
 <p>Another useful function to check file properties is <code>wav_dur()</code>. This function returns the duration in seconds of each ‘.wav’ file.</p>
@@ -624,7 +630,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-3"><a href="#cb11-3"></a>    <span class="at">width =</span> <span class="dv">15</span>, <span class="at">height =</span> <span class="dv">20</span>, <span class="at">rm.axes =</span> <span class="cn">TRUE</span>, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">box =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p><img src="images/spec_param1.jpeg" alt="viewSpec" width="780"></p>
+<p><img src="images/spec_param1.jpeg" alt="viewSpec" width="100%"></p>
 <p>&nbsp;</p>
 <p>Note that the <code>length.out</code> argument defines the number of values to interpolate within the numerical ranges. <code>wl = 220</code> seems to produce clearer spectrograms.</p>
 <p>We can add a color palette to differentiate the levels of one of the parameters, for example ‘wn’:</p>
@@ -646,7 +652,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb12-13"><a href="#cb12-13"></a>    <span class="at">tag.pal =</span> <span class="fu">list</span>(cmc))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p><img src="images/spec_param3.jpeg" alt="viewSpec" width="780"></p>
+<p><img src="images/spec_param3.jpeg" alt="viewSpec" width="100%"></p>
 <p>&nbsp;</p>
 <p>We can also use it to choose the color palette and the minimum amplitude for plotting (‘collev.min’):</p>
 <div class="cell">
@@ -658,7 +664,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb13-4"><a href="#cb13-4"></a>    <span class="at">rm.axes =</span> <span class="cn">TRUE</span>, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">box =</span> F, <span class="at">group.tag =</span> <span class="st">"pal"</span>, <span class="at">tag.pal =</span> <span class="fu">list</span>(cmc))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p><img src="images/spec_param2.jpeg" alt="viewSpec" width="780"></p>
+<p><img src="images/spec_param2.jpeg" alt="viewSpec" width="100%"></p>
 <p>&nbsp;</p>
 </section>
 <section id="double-check-selections" class="level2" data-number="5">
@@ -694,6 +700,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="cell">
 <div class="cell-output-display">
+<div>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:808px; ">
 <table class="table table-striped table-sm small" data-quarto-postprocess="true">
 <thead>
@@ -897,6 +904,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </div>
 </div>
+</div>
 <p>&nbsp;</p>
 <p>Let’s modified a selection table to see how the function works:</p>
 <div class="cell">
@@ -931,6 +939,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="cell">
 <div class="cell-output-display">
+<div>
 <table class="table table-striped table-sm small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
@@ -1011,6 +1020,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </div>
 </div>
+</div>
 <p>&nbsp;</p>
 <p><code>check_sels()</code> is used internally when creating selection tables and extended selection tables.</p>
 <p>&nbsp;</p>
@@ -1029,7 +1039,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>&nbsp;</p>
 <p>The images it produces are saved in the working directory and look like this:</p>
-<p><img src="images/spectrograms2.gif" alt="viewSpec" width="400"></p>
+<p><img src="images/spectrograms2.gif" alt="viewSpec" width="50%"></p>
 <p>&nbsp;</p>
 <div class="alert alert-info">
 <p><font size="5">Exercise</font></p>
@@ -1063,7 +1073,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb18-15"><a href="#cb18-15"></a>    <span class="dv">10</span>), <span class="at">collevels =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">140</span>, <span class="dv">0</span>, <span class="dv">5</span>), <span class="at">path =</span> <span class="st">"./examples/hermit/"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p><img src="images/fullspec_hermit.gif" alt="hermit" width="700"></p>
+<p><img src="images/fullspec_hermit.gif" alt="hermit" width="80%"></p>
 <p>&nbsp;</p>
 </section>
 </section>
@@ -1083,7 +1093,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb19-8"><a href="#cb19-8"></a>    <span class="at">height =</span> <span class="dv">20</span>, <span class="at">pal =</span> viridis, <span class="at">collevels =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">100</span>, <span class="dv">0</span>, <span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p><img src="images/Catalog_p1-inquiry.jpeg" alt="viewSpec" width="680"></p>
+<p><img src="images/Catalog_p1-inquiry.jpeg" alt="viewSpec" width="100%"></p>
 <p>&nbsp;</p>
 <div class="alert alert-info">
 <p><font size="5">Exercise</font></p>
@@ -1103,7 +1113,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r numberLines lineAnchors code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">tailor_sels</span>(<span class="at">X =</span> lbh_selec_table[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, ], <span class="at">auto.next =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p><img src="images/seltailor.autonext.gif" alt="seltailor autonext" width="820"></p>
+<p><img src="images/seltailor.autonext.gif" alt="seltailor autonext" width="100%"></p>
 <p>&nbsp;</p>
 <p>The function returns the corrected data as a data frame in R and also saves a ‘.csv’ file in the directory where the sound files are located.</p>
 <p><code>sel_tailor()</code> can also be used to modify frequency contours such as those produced by the <code>dfDTW()</code> or <code>ffDTW()</code> function:</p>
@@ -1116,7 +1126,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb21-4"><a href="#cb21-4"></a>    <span class="at">auto.contour =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p><img src="images/seltailor.contour.gif" alt="seltailor autonext" width="820"></p>
+<p><img src="images/seltailor.contour.gif" alt="seltailor autonext" width="100%"></p>
 <p>&nbsp;</p>
 <hr>
 </section>
@@ -1130,9 +1140,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><font size="4">Session information</font></p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>R version 4.3.2 (2023-10-31)
-Platform: x86_64-pc-linux-gnu (64-bit)
-Running under: Ubuntu 22.04.2 LTS
+<pre><code>R version 4.4.1 (2024-06-14)
+Platform: x86_64-pc-linux-gnu
+Running under: Ubuntu 22.04.4 LTS
 
 Matrix products: default
 BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.10.0 
@@ -1140,11 +1150,11 @@ LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.10.0
 
 locale:
  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
- [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
- [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
- [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+ [3] LC_TIME=es_CR.UTF-8        LC_COLLATE=en_US.UTF-8    
+ [5] LC_MONETARY=es_CR.UTF-8    LC_MESSAGES=en_US.UTF-8   
+ [7] LC_PAPER=es_CR.UTF-8       LC_NAME=C                 
  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
-[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+[11] LC_MEASUREMENT=es_CR.UTF-8 LC_IDENTIFICATION=C       
 
 time zone: America/Costa_Rica
 tzcode source: system (glibc)
@@ -1157,17 +1167,17 @@ other attached packages:
 [5] seewave_2.2.3      tuneR_1.4.7       
 
 loaded via a namespace (and not attached):
- [1] jsonlite_1.8.9     compiler_4.3.2     rjson_0.2.21       brio_1.1.5        
+ [1] jsonlite_1.8.9     compiler_4.4.1     rjson_0.2.23       brio_1.1.5        
  [5] Rcpp_1.0.13        xml2_1.3.6         stringr_1.5.1      moments_0.14.1    
- [9] bitops_1.0-8       parallel_4.3.2     signal_1.8-1       systemfonts_1.1.0 
+ [9] bitops_1.0-9       parallel_4.4.1     signal_1.8-1       systemfonts_1.1.0 
 [13] scales_1.3.0       yaml_2.3.10        fastmap_1.2.0      R6_2.5.1          
-[17] dtw_1.23-1         htmlwidgets_1.6.4  MASS_7.3-55        munsell_0.5.1     
+[17] dtw_1.23-1         htmlwidgets_1.6.4  MASS_7.3-61        munsell_0.5.1     
 [21] svglite_2.1.3      rlang_1.1.4        testthat_3.2.1.1   stringi_1.8.4     
-[25] xfun_0.47          fftw_1.0-8         viridisLite_0.4.2  cli_3.6.3         
+[25] xfun_0.48          fftw_1.0-9         viridisLite_0.4.2  cli_3.6.3         
 [29] withr_3.0.1        formatR_1.14       magrittr_2.0.3     bioacoustics_0.2.8
 [33] digest_0.6.37      rstudioapi_0.16.0  pbapply_1.7-2      lifecycle_1.0.4   
 [37] vctrs_0.6.5        proxy_0.4-27       evaluate_1.0.0     glue_1.8.0        
-[41] RCurl_1.98-1.16    colorspace_2.1-1   rmarkdown_2.28     tools_4.3.2       
+[41] RCurl_1.98-1.16    colorspace_2.1-1   rmarkdown_2.28     tools_4.4.1       
 [45] htmltools_0.5.8.1 </code></pre>
 </div>
 </div>
@@ -1257,7 +1267,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/marce10\.github\.io\/BIAC04\/");
+      var filterRegex = new RegExp("https:\/\/marce10\.github\.io\/PR_BIR_2024\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -1266,6 +1276,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
           // target, if specified
           link.setAttribute("target", "_blank");
           if (link.getAttribute("rel") === null) {
@@ -1307,7 +1322,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');

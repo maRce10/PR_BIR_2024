@@ -2,11 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-10-13">
+<meta name="dcterms.date" content="2024-10-14">
 
 <title>Bioacoustic data analysis with R 2024 - Basic elements of the R language</title>
 <style>
@@ -297,7 +297,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 13, 2024</p>
+      <p class="date">October 14, 2024</p>
     </div>
   </div>
   
@@ -906,7 +906,7 @@ Levels: a b</code></pre>
 <span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(bi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1388</code></pre>
+<pre><code>[1] 1402</code></pre>
 </div>
 </div>
 <p>Some functions come by default with R basic. New functions can be loaded as part of additional packages or even created by the user.</p>
@@ -978,6 +978,7 @@ Levels: a b</code></pre>
 <p>Arithmetic operators:</p>
 <div class="cell">
 <div class="cell-output-display">
+<div>
 <div class="table-responsive">
 <table class="table table-striped table-hover table-condensed table-sm small" data-quarto-postprocess="true">
 <thead>
@@ -1012,6 +1013,7 @@ Levels: a b</code></pre>
 </div>
 
 
+</div>
 </div>
 </div>
 <div class="cell">
@@ -2003,9 +2005,9 @@ Guanacaste   San José
 <h2 class="unnumbered unlisted anchored" data-anchor-id="session-info">Session info</h2>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>R version 4.3.2 (2023-10-31)
-Platform: x86_64-pc-linux-gnu (64-bit)
-Running under: Ubuntu 22.04.2 LTS
+<pre><code>R version 4.4.1 (2024-06-14)
+Platform: x86_64-pc-linux-gnu
+Running under: Ubuntu 22.04.4 LTS
 
 Matrix products: default
 BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.10.0 
@@ -2013,11 +2015,11 @@ LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.10.0
 
 locale:
  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
- [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
- [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
- [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+ [3] LC_TIME=es_CR.UTF-8        LC_COLLATE=en_US.UTF-8    
+ [5] LC_MONETARY=es_CR.UTF-8    LC_MESSAGES=en_US.UTF-8   
+ [7] LC_PAPER=es_CR.UTF-8       LC_NAME=C                 
  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
-[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+[11] LC_MEASUREMENT=es_CR.UTF-8 LC_IDENTIFICATION=C       
 
 time zone: America/Costa_Rica
 tzcode source: system (glibc)
@@ -2026,18 +2028,18 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
-[1] psych_2.3.12
+[1] psych_2.4.6.26
 
 loaded via a namespace (and not attached):
- [1] vctrs_0.6.5       nlme_3.1-155      svglite_2.1.3     cli_3.6.3        
- [5] knitr_1.48        rlang_1.1.4       xfun_0.47         stringi_1.8.4    
+ [1] vctrs_0.6.5       nlme_3.1-165      svglite_2.1.3     cli_3.6.3        
+ [5] knitr_1.48        rlang_1.1.4       xfun_0.48         stringi_1.8.4    
  [9] highr_0.11        jsonlite_1.8.9    glue_1.8.0        colorspace_2.1-1 
-[13] htmltools_0.5.8.1 scales_1.3.0      rmarkdown_2.28    grid_4.3.2       
+[13] htmltools_0.5.8.1 scales_1.3.0      rmarkdown_2.28    grid_4.4.1       
 [17] evaluate_1.0.0    munsell_0.5.1     kableExtra_1.4.0  fastmap_1.2.0    
-[21] yaml_2.3.10       lifecycle_1.0.4   stringr_1.5.1     compiler_4.3.2   
-[25] htmlwidgets_1.6.4 rstudioapi_0.16.0 lattice_0.20-45   systemfonts_1.1.0
-[29] digest_0.6.37     viridisLite_0.4.2 R6_2.5.1          parallel_4.3.2   
-[33] mnormt_2.1.1      magrittr_2.0.3    tools_4.3.2       xml2_1.3.6       </code></pre>
+[21] yaml_2.3.10       lifecycle_1.0.4   stringr_1.5.1     compiler_4.4.1   
+[25] htmlwidgets_1.6.4 rstudioapi_0.16.0 lattice_0.22-6    systemfonts_1.1.0
+[29] digest_0.6.37     viridisLite_0.4.2 R6_2.5.1          parallel_4.4.1   
+[33] mnormt_2.1.1      magrittr_2.0.3    tools_4.4.1       xml2_1.3.6       </code></pre>
 </div>
 </div>
 
@@ -2136,6 +2138,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
           // target, if specified
           link.setAttribute("target", "_blank");
           if (link.getAttribute("rel") === null) {
@@ -2177,7 +2184,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');

@@ -100,11 +100,11 @@ Annotation tables can be generated within R, or imported from sound analysis pro
 
 ## Raven
 
-[Raven sound analysis software](https://www.birds.cornell.edu/ccb/raven/RavenOverview.html) ([Cornell Lab of Ornithology](http://www.birds.cornell.edu)) provides very powerful tools for the analysis of sounds (animals). **Raven** allows you to use the cursor to manually define the frequency and time limits of the signals. It is a very flexible and user friendly program. The annotations can be saved in a selection file (selection table) in .txt format:
+[Raven sound analysis software](https://www.ravensoundsoftware.com/) ([Cornell Lab of Ornithology](https://www.birds.cornell.edu/home)) provides very powerful tools for the analysis of sounds (animals). **Raven** allows you to use the cursor to manually define the frequency and time limits of the signals. It is a very flexible and user friendly program. The annotations can be saved in a selection file (selection table) in .txt format:
 
  
 
-<img src="images/Raven.selec.gif" alt="Raven" width="820"/>
+<img src="images/Raven.selec.gif" alt="Raven" width="100%"/>
 
  
 
@@ -112,7 +112,7 @@ Selections can be reopened on the original file where they were made:
 
  
 
-<img src="images/Raven.open.st.gif" alt="Raven" width="820"/>
+<img src="images/Raven.open.st.gif" alt="Raven" width="100%"/>
 
  
 
@@ -120,7 +120,7 @@ The selections with sound (sound selection table) are a special type of annotati
 
  
 
-<img src="images/Raven.create.sst.gif" alt="Raven" width="820"/>
+<img src="images/Raven.create.sst.gif" alt="Raven" width="100%"/>
 
  
 
@@ -128,7 +128,7 @@ These selections open easily in Raven, as long as the sound files are kept in th
 
  
 
-<img src="images/Raven.open.sst.gif" alt="Raven" width="820"/>
+<img src="images/Raven.open.sst.gif" alt="Raven" width="100%"/>
 
  
 
@@ -136,7 +136,7 @@ These selections open easily in Raven, as long as the sound files are kept in th
 
  
 
-The **Rraven** package is designed to facilitate data exchange between R and [Raven sound analysis software](http://www.birds.cornell.edu/brp/raven/RavenOverview.html). R can simplify the automation of complex analysis routines. In addition, R packages such as **warbleR**, **seewave** and **monitorR** (among others) provide additional methods of analysis, which work as a perfect complement to those found in Raven. Therefore, bridging these applications can greatly expand the bioacoustic toolkit.
+The **Rraven** package is designed to facilitate data exchange between R and [Raven sound analysis software](https://www.ravensoundsoftware.com/). R can simplify the automation of complex analysis routines. In addition, R packages such as **warbleR**, **seewave** and **monitorR** (among others) provide additional methods of analysis, which work as a perfect complement to those found in Raven. Therefore, bridging these applications can greatly expand the bioacoustic toolkit.
 
 Currently, most Raven analyzes cannot be run in the background from a command terminal. Therefore, most of the **Rraven** functions are designed to simplify the exchange of data between the two programs, and in some cases, export files to Raven for further analysis. This tutorial provides detailed examples for each function in **Rraven**, including both the R code and the additional steps required to fully conduct the analyses. Raven Pro must be installed in order to run some of the code.
 
@@ -518,7 +518,7 @@ par(mfrow = c(3, 2), mar = rep(0, 4))
 
 for(i in 1:6){
   
-  wv <- read_wave(X = dat, index = i, from = 0.17, to = 0.4)
+  wv <- read_sound_file(X = dat, index = i, from = 0.17, to = 0.4)
 
   spectro(
     wv,

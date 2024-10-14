@@ -1,4 +1,4 @@
-install.packages("quarto")
+# install.packages("quarto")
 
 library(quarto)
 
@@ -15,3 +15,4 @@ cu <- check_urls()
 View(cu)
 
 err_cu <- cu[cu$Message != "OK",]
+View(err_cu)

@@ -1,5 +1,5 @@
 ---
-title: Quality checks for recordings and annotations
+title: <font size="7"><b>Quality checks for recordings and annotations</b></font>
 ---
 
  
@@ -223,7 +223,7 @@ tweak_spectro(X = lbh_selec_table,  wl = c(100, 1000),  wn = c("hanning", "hammi
 
 ```
 
-<img src="images/spec_param1.jpeg" alt="viewSpec" width="780"/>
+<img src="images/spec_param1.jpeg" alt="viewSpec" width="100%"/>
 
  
 
@@ -247,7 +247,7 @@ tweak_spectro(X = lbh_selec_table,  wl = c(100, 1000),  wn = c("hanning", "hammi
 
 ```
 
-<img src="images/spec_param3.jpeg" alt="viewSpec" width="780"/>
+<img src="images/spec_param3.jpeg" alt="viewSpec" width="100%"/>
 
  
 
@@ -259,7 +259,7 @@ tweak_spectro(X = lbh_selec_table,  wl = 220,  collev.min = c(-20, -100), pal = 
 
 ```
 
-<img src="images/spec_param2.jpeg" alt="viewSpec" width="780"/>
+<img src="images/spec_param2.jpeg" alt="viewSpec" width="100%"/>
 
  
 
@@ -416,7 +416,7 @@ spectrograms(lbh_selec_table, collevels = seq(-100, 0, 5))
 
 The images it produces are saved in the working directory and look like this:
 
-<img src="images/spectrograms2.gif" alt="viewSpec" width="400"/>
+<img src="images/spectrograms2.gif" alt="viewSpec" width="50%"/>
 
  
 
@@ -454,7 +454,7 @@ full_spectrograms(sxrow = 1, rows = 10, pal = magma,  wl = 200, flim = c(3, 10),
 
 ```
 
-<img src="images/fullspec_hermit.gif" alt="hermit" width="700"/>
+<img src="images/fullspec_hermit.gif" alt="hermit" width="80%"/>
 
  
 
@@ -475,7 +475,7 @@ catalog(X = inq[1:100, ], flim = c(10, 50), nrow = 10, ncol = 10,
 
 ```
 
-<img src="images/Catalog_p1-inquiry.jpeg" alt="viewSpec" width="680"/>
+<img src="images/Catalog_p1-inquiry.jpeg" alt="viewSpec" width="100%"/>
 
  
 
@@ -499,7 +499,7 @@ tailor_sels(X = lbh_selec_table[1:4, ], auto.next = TRUE)
 
 ```
 
-<img src="images/seltailor.autonext.gif" alt="seltailor autonext" width="820"/>
+<img src="images/seltailor.autonext.gif" alt="seltailor autonext" width="100%"/>
 
  
 
@@ -515,7 +515,7 @@ tail.cntours <-tailor_sels(X = lbh_selec_table[1:5, ], ts.df = cntours,
                 auto.contour = TRUE)
 ```
 
-<img src="images/seltailor.contour.gif" alt="seltailor autonext" width="820"/>
+<img src="images/seltailor.contour.gif" alt="seltailor autonext" width="100%"/>
 
  
 
