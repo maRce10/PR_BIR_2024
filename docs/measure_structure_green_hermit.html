@@ -2,11 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-10-13">
+<meta name="dcterms.date" content="2024-10-14">
 
 <title>Bioacoustic data analysis with R 2024 - Case study</title>
 <style>
@@ -110,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/proj4-2.6.2/proj4.min.js"></script>
 <script src="site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
 <link href="site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
-<script src="site_libs/leaflet-binding-2.2.1/leaflet.js"></script>
+<script src="site_libs/leaflet-binding-2.2.2/leaflet.js"></script>
 <link href="site_libs/leaflet-awesomemarkers-2.0.3/leaflet.awesome-markers.css" rel="stylesheet">
 <script src="site_libs/leaflet-awesomemarkers-2.0.3/leaflet.awesome-markers.min.js"></script>
 <link href="site_libs/ionicons-2.0.1/ionicons.min.css" rel="stylesheet">
@@ -240,7 +240,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/maRce10/BIAC04/"> <i class="bi bi-github" role="img" aria-label="GitHub">
+    <a class="nav-link" href="https://github.com/maRce10/PR_BIR_2024/"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -278,7 +278,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><font size="6"><b>Case study</b></font></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><font size="7"><b>Case study</b></font></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -289,7 +289,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 13, 2024</p>
+      <p class="date">October 14, 2024</p>
     </div>
   </div>
   
@@ -336,8 +336,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map_xc</span>(song_pg, <span class="at">leaflet.map =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="leaflet html-widget html-fill-item" id="htmlwidget-45dbc5df94e451079d7a" style="width:100%;height:361px;"></div>
-<script type="application/json" data-for="htmlwidget-45dbc5df94e451079d7a">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addAwesomeMarkers","args":[[5.113,10.3064,8.600099999999999,10.1614,7.998,5.0791,-4.108,-2.42,-5.6708],[-75.9401,-84.8075,-80.1251,-83.9376,-77.71380000000001,-75.68519999999999,-78.964,-78.06,-77.6953],{"icon":"ios-close","markerColor":["white","darkgreen","white","darkgreen","darkgreen","white","darkred","darkred","white"],"iconColor":"black","spin":false,"squareMarker":false,"iconRotate":0,"font":"monospace","prefix":"ion"},null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["<b><a href='https://www.xeno-canto.org/687234'>XC687234<\/a><\/b><br/><i>Phaethornis guy<\/i><br/> Subspecies: not provided<br/> Country: Colombia<br/> Locality: Distrito de Manejo Integrado Agua linda - Apía, Risaralda <br/> Voc.type: adult, female, song<br/> Recordist: Fabio Agudelo Zapata<b><a href='https://www.xeno-canto.org/687234/download'><br/>listen<\/a>","<b><a href='https://www.xeno-canto.org/665512'>XC665512<\/a><\/b><br/><i>Phaethornis guy<\/i><br/> Subspecies: coruscus<br/> Country: Costa Rica<br/> Locality: Monteverde, Provincia de Puntarenas<br/> Voc.type: adult, male, song<br/> Recordist: Alexis Bukowski<b><a href='https://www.xeno-canto.org/665512/download'><br/>listen<\/a>","<b><a href='https://www.xeno-canto.org/541543'>XC541543<\/a><\/b><br/><i>Phaethornis guy<\/i><br/> Subspecies: not provided<br/> Country: Panama<br/> Locality: El Valle de Antón, Coclé Province<br/> Voc.type: adult, song<br/> Recordist: Kent Livezey<b><a href='https://www.xeno-canto.org/541543/download'><br/>listen<\/a>","<b><a href='https://www.xeno-canto.org/518285'>XC518285<\/a><\/b><br/><i>Phaethornis guy<\/i><br/> Subspecies: coruscus<br/> Country: Costa Rica<br/> Locality: Braulio Carillo NP, San José<br/> Voc.type: song<br/> Recordist: Hans Matheve<b><a href='https://www.xeno-canto.org/518285/download'><br/>listen<\/a>","<b><a href='https://www.xeno-canto.org/359439'>XC359439<\/a><\/b><br/><i>Phaethornis guy<\/i><br/> Subspecies: coruscus<br/> Country: Panama<br/> Locality: Cerro Pirre (middle)<br/> Voc.type: song<br/> Recordist: Hans Matheve<b><a href='https://www.xeno-canto.org/359439/download'><br/>listen<\/a>","<b><a href='https://www.xeno-canto.org/344329'>XC344329<\/a><\/b><br/><i>Phaethornis guy<\/i><br/> Subspecies: not provided<br/> Country: Colombia<br/> Locality: Hotel Tinamú Birding Nature Reserve<br/> Voc.type: song<br/> Recordist: Hotel Tinamu<b><a href='https://www.xeno-canto.org/344329/download'><br/>listen<\/a>","<b><a href='https://www.xeno-canto.org/257788'>XC257788<\/a><\/b><br/><i>Phaethornis guy<\/i><br/> Subspecies: apicalis<br/> Country: Ecuador<br/> Locality: Zamora-Chinchipe: Río Bombuscaro<br/> Voc.type: song<br/> Recordist: John V. Moore<b><a href='https://www.xeno-canto.org/257788/download'><br/>listen<\/a>","<b><a href='https://www.xeno-canto.org/238804'>XC238804<\/a><\/b><br/><i>Phaethornis guy<\/i><br/> Subspecies: apicalis<br/> Country: Ecuador<br/> Locality: Morona-Santiago: w-slope Cord. de Cutucú<br/> Voc.type: song<br/> Recordist: Niels Krabbe<b><a href='https://www.xeno-canto.org/238804/download'><br/>listen<\/a>","<b><a href='https://www.xeno-canto.org/227574'>XC227574<\/a><\/b><br/><i>Phaethornis guy<\/i><br/> Subspecies: not provided<br/> Country: Peru<br/> Locality: Abra Patricia road, San Martín<br/> Voc.type: song<br/> Recordist: Peter Boesman<b><a href='https://www.xeno-canto.org/227574/download'><br/>listen<\/a>"],null,null,null,["Subsp. not provided","coruscus","Subsp. not provided","coruscus","coruscus","Subsp. not provided","apicalis","apicalis","Subsp. not provided"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addMiniMap","args":[null,null,"bottomright",150,150,19,19,-5,false,false,false,false,false,false,{"color":"#ff7800","weight":1,"clickable":false},{"color":"#000000","weight":1,"clickable":false,"opacity":0,"fillOpacity":0},{"hideText":"Hide MiniMap","showText":"Show MiniMap"},[]]},{"method":"addEasyButton","args":[{"icon":"fa-globe","title":"Zoom to full view","onClick":"function(btn, map){ map.setZoom(1); }","position":"topleft"}]}],"limits":{"lat":[-5.6708,10.3064],"lng":[-84.8075,-75.68519999999999]}},"evals":["calls.3.args.0.onClick"],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-8c3d4c41b32ebbc094bd" style="width:100%;height:361px;"></div>
+<script type="application/json" data-for="htmlwidget-8c3d4c41b32ebbc094bd">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addAwesomeMarkers","args":[[5.113,10.3064,8.600099999999999,10.1614,7.998,5.0791,-4.108,-2.42,-5.6708],[-75.9401,-84.8075,-80.1251,-83.9376,-77.71380000000001,-75.68519999999999,-78.964,-78.06,-77.6953],{"icon":"ios-close","markerColor":["white","darkgreen","white","darkgreen","darkgreen","white","darkred","darkred","white"],"iconColor":"black","spin":false,"squareMarker":false,"iconRotate":0,"font":"monospace","prefix":"ion"},null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["<b><a href='https://www.xeno-canto.org/687234'>XC687234<\/a><\/b><br/><i>Phaethornis guy<\/i><br/> Subspecies: not provided<br/> Country: Colombia<br/> Locality: Distrito de Manejo Integrado Agua linda - Apía, Risaralda <br/> Voc.type: adult, female, song<br/> Recordist: Fabio Agudelo Zapata<b><a href='https://www.xeno-canto.org/687234/download'><br/>listen<\/a>","<b><a href='https://www.xeno-canto.org/665512'>XC665512<\/a><\/b><br/><i>Phaethornis guy<\/i><br/> Subspecies: coruscus<br/> Country: Costa Rica<br/> Locality: Monteverde, Provincia de Puntarenas<br/> Voc.type: adult, male, song<br/> Recordist: Alexis Bukowski<b><a href='https://www.xeno-canto.org/665512/download'><br/>listen<\/a>","<b><a href='https://www.xeno-canto.org/541543'>XC541543<\/a><\/b><br/><i>Phaethornis guy<\/i><br/> Subspecies: not provided<br/> Country: Panama<br/> Locality: El Valle de Antón, Coclé Province<br/> Voc.type: adult, song<br/> Recordist: Kent Livezey<b><a href='https://www.xeno-canto.org/541543/download'><br/>listen<\/a>","<b><a href='https://www.xeno-canto.org/518285'>XC518285<\/a><\/b><br/><i>Phaethornis guy<\/i><br/> Subspecies: coruscus<br/> Country: Costa Rica<br/> Locality: Braulio Carillo NP, San José<br/> Voc.type: song<br/> Recordist: Hans Matheve<b><a href='https://www.xeno-canto.org/518285/download'><br/>listen<\/a>","<b><a href='https://www.xeno-canto.org/359439'>XC359439<\/a><\/b><br/><i>Phaethornis guy<\/i><br/> Subspecies: coruscus<br/> Country: Panama<br/> Locality: Cerro Pirre (middle)<br/> Voc.type: song<br/> Recordist: Hans Matheve<b><a href='https://www.xeno-canto.org/359439/download'><br/>listen<\/a>","<b><a href='https://www.xeno-canto.org/344329'>XC344329<\/a><\/b><br/><i>Phaethornis guy<\/i><br/> Subspecies: not provided<br/> Country: Colombia<br/> Locality: Hotel Tinamú Birding Nature Reserve<br/> Voc.type: song<br/> Recordist: Hotel Tinamu<b><a href='https://www.xeno-canto.org/344329/download'><br/>listen<\/a>","<b><a href='https://www.xeno-canto.org/257788'>XC257788<\/a><\/b><br/><i>Phaethornis guy<\/i><br/> Subspecies: apicalis<br/> Country: Ecuador<br/> Locality: Zamora-Chinchipe: Río Bombuscaro<br/> Voc.type: song<br/> Recordist: John V. Moore<b><a href='https://www.xeno-canto.org/257788/download'><br/>listen<\/a>","<b><a href='https://www.xeno-canto.org/238804'>XC238804<\/a><\/b><br/><i>Phaethornis guy<\/i><br/> Subspecies: apicalis<br/> Country: Ecuador<br/> Locality: Morona-Santiago: w-slope Cord. de Cutucú<br/> Voc.type: song<br/> Recordist: Niels Krabbe<b><a href='https://www.xeno-canto.org/238804/download'><br/>listen<\/a>","<b><a href='https://www.xeno-canto.org/227574'>XC227574<\/a><\/b><br/><i>Phaethornis guy<\/i><br/> Subspecies: not provided<br/> Country: Peru<br/> Locality: Abra Patricia road, San Martín<br/> Voc.type: song<br/> Recordist: Peter Boesman<b><a href='https://www.xeno-canto.org/227574/download'><br/>listen<\/a>"],null,null,null,["Subsp. not provided","coruscus","Subsp. not provided","coruscus","coruscus","Subsp. not provided","apicalis","apicalis","Subsp. not provided"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addMiniMap","args":[null,null,"bottomright",150,150,19,19,-5,false,false,false,false,false,false,{"color":"#ff7800","weight":1,"clickable":false},{"color":"#000000","weight":1,"clickable":false,"opacity":0,"fillOpacity":0},{"hideText":"Hide MiniMap","showText":"Show MiniMap"},[]]},{"method":"addEasyButton","args":[{"icon":"fa-globe","title":"Zoom to full view","onClick":"function(btn, map){ map.setZoom(1); }","position":"topleft"}]}],"limits":{"lat":[-5.6708,10.3064],"lng":[-84.8075,-75.68519999999999]}},"evals":["calls.3.args.0.onClick"],"jsHooks":[]}</script>
 <p>&nbsp;</p>
 <p>Once you feel fine with the subset of data you can go ahead and download the sound files and save the metadata as a .csv file:</p>
 <div class="cell">
@@ -660,11 +660,11 @@ Call:
 mantel(xdis = geo_dist, ydis = acoust_dist) 
 
 Mantel statistic r: 0.02618 
-      Significance: 0.265 
+      Significance: 0.255 
 
 Upper quantiles of permutations (null model):
    90%    95%  97.5%    99% 
-0.0689 0.0998 0.1280 0.1770 
+0.0735 0.1046 0.1409 0.1679 
 Permutation: free
 Number of permutations: 999</code></pre>
 </div>
@@ -675,9 +675,9 @@ Number of permutations: 999</code></pre>
 <p><font size="4">Session information</font></p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>R version 4.3.2 (2023-10-31)
-Platform: x86_64-pc-linux-gnu (64-bit)
-Running under: Ubuntu 22.04.2 LTS
+<pre><code>R version 4.4.1 (2024-06-14)
+Platform: x86_64-pc-linux-gnu
+Running under: Ubuntu 22.04.4 LTS
 
 Matrix products: default
 BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.10.0 
@@ -685,11 +685,11 @@ LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.10.0
 
 locale:
  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
- [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
- [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
- [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+ [3] LC_TIME=es_CR.UTF-8        LC_COLLATE=en_US.UTF-8    
+ [5] LC_MONETARY=es_CR.UTF-8    LC_MESSAGES=en_US.UTF-8   
+ [7] LC_PAPER=es_CR.UTF-8       LC_NAME=C                 
  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
-[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+[11] LC_MEASUREMENT=es_CR.UTF-8 LC_IDENTIFICATION=C       
 
 time zone: America/Costa_Rica
 tzcode source: system (glibc)
@@ -698,27 +698,27 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
- [1] vegan_2.6-8        lattice_0.20-45    permute_0.9-7      viridis_0.6.5     
+ [1] vegan_2.6-8        lattice_0.22-6     permute_0.9-7      viridis_0.6.5     
  [5] viridisLite_0.4.2  ggplot2_3.5.1      readxl_1.4.3       warbleR_1.1.32    
  [9] NatureSounds_1.0.4 knitr_1.48         seewave_2.2.3      tuneR_1.4.7       
 
 loaded via a namespace (and not attached):
- [1] gtable_0.3.5      rjson_0.2.21      xfun_0.47         htmlwidgets_1.6.4
- [5] vctrs_0.6.5       tools_4.3.2       crosstalk_1.2.1   bitops_1.0-8     
- [9] generics_0.1.3    parallel_4.3.2    tibble_3.2.1      proxy_0.4-27     
-[13] fansi_1.0.6       cluster_2.1.2     pkgconfig_2.0.3   Matrix_1.6-5     
-[17] leaflet_2.2.1     lifecycle_1.0.4   compiler_4.3.2    farver_2.1.2     
-[21] brio_1.1.5        munsell_0.5.1     codetools_0.2-18  htmltools_0.5.8.1
+ [1] gtable_0.3.5      rjson_0.2.23      xfun_0.48         htmlwidgets_1.6.4
+ [5] vctrs_0.6.5       tools_4.4.1       crosstalk_1.2.1   bitops_1.0-9     
+ [9] generics_0.1.3    parallel_4.4.1    tibble_3.2.1      proxy_0.4-27     
+[13] fansi_1.0.6       cluster_2.1.6     pkgconfig_2.0.3   Matrix_1.7-0     
+[17] leaflet_2.2.2     lifecycle_1.0.4   compiler_4.4.1    farver_2.1.2     
+[21] brio_1.1.5        munsell_0.5.1     codetools_0.2-20  htmltools_0.5.8.1
 [25] maps_3.4.2        RCurl_1.98-1.16   yaml_2.3.10       pillar_1.9.0     
-[29] jquerylib_0.1.4   MASS_7.3-55       iterators_1.0.14  foreach_1.5.2    
-[33] nlme_3.1-155      tidyselect_1.2.1  digest_0.6.37     dplyr_1.1.4      
-[37] labeling_0.4.3    splines_4.3.2     fastmap_1.2.0     grid_4.3.2       
+[29] jquerylib_0.1.4   MASS_7.3-61       iterators_1.0.14  foreach_1.5.2    
+[33] nlme_3.1-165      tidyselect_1.2.1  digest_0.6.37     dplyr_1.1.4      
+[37] labeling_0.4.3    splines_4.4.1     fastmap_1.2.0     grid_4.4.1       
 [41] colorspace_2.1-1  cli_3.6.3         magrittr_2.0.3    utf8_1.2.4       
 [45] withr_3.0.1       scales_1.3.0      shinyBS_0.61.1    rmarkdown_2.28   
 [49] signal_1.8-1      gridExtra_2.3     cellranger_1.1.0  pbapply_1.7-2    
-[53] evaluate_1.0.0    dtw_1.23-1        fftw_1.0-8        testthat_3.2.1.1 
-[57] mgcv_1.8-39       rlang_1.1.4       Rcpp_1.0.13       glue_1.8.0       
-[61] rstudioapi_0.16.0 jsonlite_1.8.9    R6_2.5.1          soundgen_2.6.2   </code></pre>
+[53] evaluate_1.0.0    dtw_1.23-1        fftw_1.0-9        testthat_3.2.1.1 
+[57] mgcv_1.9-1        rlang_1.1.4       Rcpp_1.0.13       glue_1.8.0       
+[61] rstudioapi_0.16.0 jsonlite_1.8.9    R6_2.5.1          soundgen_2.6.3   </code></pre>
 </div>
 </div>
 
@@ -860,7 +860,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/marce10\.github\.io\/BIAC04\/");
+      var filterRegex = new RegExp("https:\/\/marce10\.github\.io\/PR_BIR_2024\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -869,6 +869,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
           // target, if specified
           link.setAttribute("target", "_blank");
           if (link.getAttribute("rel") === null) {
@@ -910,7 +915,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -1185,7 +1194,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb21" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &lt;font size="6"&gt;&lt;b&gt;Case study&lt;/b&gt;&lt;/font&gt;</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &lt;font size="7"&gt;&lt;b&gt;Case study&lt;/b&gt;&lt;/font&gt;</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="an">toc:</span><span class="co"> true</span></span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="an">toc-depth:</span><span class="co"> 2</span></span>
 <span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="an">toc-location:</span><span class="co"> left</span></span>

@@ -1,5 +1,5 @@
 ---
-title: Import annotations into R
+title: <font size="7"><b>Import annotations into R</b></font>
 ---
 
  

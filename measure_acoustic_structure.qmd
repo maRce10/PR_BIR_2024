@@ -1,5 +1,5 @@
 ---
-title: Measures of acoustic structure
+title: <font size="7"><b>Measures of acoustic structure</b></font>
 ---
 
  

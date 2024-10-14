@@ -1,5 +1,5 @@
 ---
-title: Sound
+title: <font size="7"><b>Sound</b></font>
 editor_options: 
   chunk_output_type: console
 ---
@@ -123,7 +123,7 @@ par(opar)
 
 ## Sampling frequency
 
-Digitizing implies discretizing, which requires some sort of regular sampling. Sampling frequency refers to how many samples of the pressure level of the environment are taken per second. A 440 Hz sine wave recorded at 44100 Hz would have around 100 samples per cycle. This plot shows 2 cycles of a 440 Hz sine wave sampled (vertical dotted lines) at 44100 Hz:
+Digitizing implies discretizing, which requires some sort of regular sampling. Sampling frequency refers to how many samples of the pressure level of the environment are taken per second. A 440 Hz sine wave recorded at 44100 Hz would have around 100 samples per cycle. This plot shows 2 cycles of a 440 Hz sine wave sampled (vertical dotted lines) at 4410 Hz (a 1/10 of the recording sampling rate):
 
 ```{r, echo = FALSE, out.width="100%", fig.height= 3, warning=FALSE, message=FALSE}
 

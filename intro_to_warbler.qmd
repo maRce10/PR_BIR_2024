@@ -1,5 +1,5 @@
 ---
-title: Introduction to warbleR
+title: <font size="7"><b>Introduction to warbleR</b></font>
 ---
 
  

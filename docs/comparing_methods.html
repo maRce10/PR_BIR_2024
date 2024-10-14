@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-10-13">
+<meta name="dcterms.date" content="2024-10-14">
 
-<title>Bioacoustic data analysis with R 2024 - Comparing the performance of methods for measuring acoustic structure</title>
+<title>Bioacoustic data analysis with R 2024 - Comparing methods for measuring acoustic structure</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -220,7 +220,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/maRce10/BIAC04/"> <i class="bi bi-github" role="img" aria-label="GitHub">
+    <a class="nav-link" href="https://github.com/maRce10/PR_BIR_2024/"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -253,7 +253,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Comparing the performance of methods for measuring acoustic structure</h1>
+<h1 class="title"><font size="6"><b>Comparing methods for measuring acoustic structure</b></font></h1>
 </div>
 
 
@@ -264,7 +264,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 13, 2024</p>
+      <p class="date">October 14, 2024</p>
     </div>
   </div>
   
@@ -373,9 +373,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><font size="4">Session information</font></p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>R version 4.3.2 (2023-10-31)
-Platform: x86_64-pc-linux-gnu (64-bit)
-Running under: Ubuntu 22.04.2 LTS
+<pre><code>R version 4.4.1 (2024-06-14)
+Platform: x86_64-pc-linux-gnu
+Running under: Ubuntu 22.04.4 LTS
 
 Matrix products: default
 BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.10.0 
@@ -383,11 +383,11 @@ LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.10.0
 
 locale:
  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
- [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
- [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
- [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+ [3] LC_TIME=es_CR.UTF-8        LC_COLLATE=en_US.UTF-8    
+ [5] LC_MONETARY=es_CR.UTF-8    LC_MESSAGES=en_US.UTF-8   
+ [7] LC_PAPER=es_CR.UTF-8       LC_NAME=C                 
  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
-[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+[11] LC_MEASUREMENT=es_CR.UTF-8 LC_IDENTIFICATION=C       
 
 time zone: America/Costa_Rica
 tzcode source: system (glibc)
@@ -396,14 +396,14 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 loaded via a namespace (and not attached):
- [1] cli_3.6.3          knitr_1.48         rlang_1.1.4        xfun_0.47         
- [5] tuneR_1.4.7        jsonlite_1.8.9     rjson_0.2.21       RCurl_1.98-1.16   
- [9] dtw_1.23-1         fftw_1.0-8         htmltools_0.5.8.1  warbleR_1.1.32    
+ [1] cli_3.6.3          knitr_1.48         rlang_1.1.4        xfun_0.48         
+ [5] tuneR_1.4.7        jsonlite_1.8.9     rjson_0.2.23       RCurl_1.98-1.16   
+ [9] dtw_1.23-1         fftw_1.0-9         htmltools_0.5.8.1  warbleR_1.1.32    
 [13] brio_1.1.5         rmarkdown_2.28     NatureSounds_1.0.4 evaluate_1.0.0    
-[17] MASS_7.3-55        bitops_1.0-8       fastmap_1.2.0      yaml_2.3.10       
-[21] compiler_4.3.2     testthat_3.2.1.1   htmlwidgets_1.6.4  Rcpp_1.0.13       
+[17] MASS_7.3-61        bitops_1.0-9       fastmap_1.2.0      yaml_2.3.10       
+[21] compiler_4.4.1     testthat_3.2.1.1   htmlwidgets_1.6.4  Rcpp_1.0.13       
 [25] pbapply_1.7-2      rstudioapi_0.16.0  digest_0.6.37      R6_2.5.1          
-[29] signal_1.8-1       parallel_4.3.2     magrittr_2.0.3     tools_4.3.2       
+[29] signal_1.8-1       parallel_4.4.1     magrittr_2.0.3     tools_4.4.1       
 [33] proxy_0.4-27       seewave_2.2.3     </code></pre>
 </div>
 </div>
@@ -493,7 +493,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/marce10\.github\.io\/BIAC04\/");
+      var filterRegex = new RegExp("https:\/\/marce10\.github\.io\/PR_BIR_2024\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -502,6 +502,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
           // target, if specified
           link.setAttribute("target", "_blank");
           if (link.getAttribute("rel") === null) {
@@ -543,7 +548,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');

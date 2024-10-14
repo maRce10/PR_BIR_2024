@@ -1,5 +1,5 @@
 ---
-title: Comparing the performance of methods for measuring acoustic structure
+title: <font size="6"><b>Comparing methods for measuring acoustic structure</b></font>
 ---
 
  

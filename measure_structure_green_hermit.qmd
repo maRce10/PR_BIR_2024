@@ -1,5 +1,5 @@
 ---
-title: <font size="6"><b>Case study</b></font>
+title: <font size="7"><b>Case study</b></font>
 toc: true
 toc-depth: 2
 toc-location: left

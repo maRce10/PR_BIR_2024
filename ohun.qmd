@@ -1,5 +1,5 @@
 ---
-title: <i>ohun</i>&#x3A; optimizing acoustic signal detection
+title: <font size="7"><b><i>ohun</i>&#x3A; optimizing acoustic signal detection</b></font>
 ---
 
 ::: {.alert .alert-info}
@@ -16,7 +16,7 @@ title: <i>ohun</i>&#x3A; optimizing acoustic signal detection
 
  
 
-::: {.alert .alert-info}
+::: {.alert .alert-warning}
 <font size = "4">The main features of the package are: </font>
 
 -   The use of reference annotations for detection optimization and diagnostic
@@ -523,7 +523,7 @@ set.seed(12)
 durs <- rep(c(0.3, 1), 5)
 
 sim_2 <-
-  sim_songs(
+  simulate_songs(
     n = 10,
     durs = durs,
     freqs = 5,

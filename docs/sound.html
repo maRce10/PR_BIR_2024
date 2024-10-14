@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -291,7 +291,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Sound</h1>
+<h1 class="title"><font size="7"><b>Sound</b></font></h1>
 </div>
 
 
@@ -352,7 +352,7 @@ window.Quarto = {
 <p>&nbsp;</p>
 <section id="sampling-frequency" class="level2" data-number="0.1">
 <h2 data-number="0.1" class="anchored" data-anchor-id="sampling-frequency"><span class="header-section-number">0.1</span> Sampling frequency</h2>
-<p>Digitizing implies discretizing, which requires some sort of regular sampling. Sampling frequency refers to how many samples of the pressure level of the environment are taken per second. A 440 Hz sine wave recorded at 44100 Hz would have around 100 samples per cycle. This plot shows 2 cycles of a 440 Hz sine wave sampled (vertical dotted lines) at 44100 Hz:</p>
+<p>Digitizing implies discretizing, which requires some sort of regular sampling. Sampling frequency refers to how many samples of the pressure level of the environment are taken per second. A 440 Hz sine wave recorded at 44100 Hz would have around 100 samples per cycle. This plot shows 2 cycles of a 440 Hz sine wave sampled (vertical dotted lines) at 4410 Hz (a 1/10 of the recording sampling rate):</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -592,7 +592,7 @@ window.Quarto = {
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(s4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code> Time-Series [1:4001] from 0 to 0.5: -0.4714 -0.0189 -0.0405 0.5881 -0.1182 ...</code></pre>
+<pre><code> Time-Series [1:4001] from 0 to 0.5: 0.518 0.559 -0.99 -0.337 -0.273 ...</code></pre>
 </div>
 </div>
 <p>&nbsp;</p>
@@ -1095,9 +1095,9 @@ attr(,"package")
 <p><font size="4">Session information</font></p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>R version 4.3.2 (2023-10-31)
-Platform: x86_64-pc-linux-gnu (64-bit)
-Running under: Ubuntu 22.04.2 LTS
+<pre><code>R version 4.4.1 (2024-06-14)
+Platform: x86_64-pc-linux-gnu
+Running under: Ubuntu 22.04.4 LTS
 
 Matrix products: default
 BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.10.0 
@@ -1105,11 +1105,11 @@ LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.10.0
 
 locale:
  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
- [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
- [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
- [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+ [3] LC_TIME=es_CR.UTF-8        LC_COLLATE=en_US.UTF-8    
+ [5] LC_MONETARY=es_CR.UTF-8    LC_MESSAGES=en_US.UTF-8   
+ [7] LC_PAPER=es_CR.UTF-8       LC_NAME=C                 
  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
-[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+[11] LC_MEASUREMENT=es_CR.UTF-8 LC_IDENTIFICATION=C       
 
 time zone: America/Costa_Rica
 tzcode source: system (glibc)
@@ -1122,20 +1122,20 @@ other attached packages:
 [5] tuneR_1.4.7        knitr_1.48         seewave_2.2.3     
 
 loaded via a namespace (and not attached):
- [1] viridis_0.6.5      utf8_1.2.4         generics_0.1.3     bitops_1.0-8      
+ [1] viridis_0.6.5      utf8_1.2.4         generics_0.1.3     bitops_1.0-9      
  [5] stringi_1.8.4      digest_0.6.37      magrittr_2.0.3     evaluate_1.0.0    
- [9] grid_4.3.2         fastmap_1.2.0      jsonlite_1.8.9     brio_1.1.5        
+ [9] grid_4.4.1         fastmap_1.2.0      jsonlite_1.8.9     brio_1.1.5        
 [13] formatR_1.14       gridExtra_2.3      fansi_1.0.6        viridisLite_0.4.2 
 [17] scales_1.3.0       pbapply_1.7-2      cli_3.6.3          rlang_1.1.4       
-[21] fftw_1.0-8         munsell_0.5.1      withr_3.0.1        yaml_2.3.10       
-[25] tools_4.3.2        parallel_4.3.2     dplyr_1.1.4        colorspace_2.1-1  
+[21] fftw_1.0-9         munsell_0.5.1      withr_3.0.1        yaml_2.3.10       
+[25] tools_4.4.1        parallel_4.4.1     dplyr_1.1.4        colorspace_2.1-1  
 [29] ggplot2_3.5.1      bioacoustics_0.2.8 vctrs_0.6.5        R6_2.5.1          
 [33] proxy_0.4-27       lifecycle_1.0.4    dtw_1.23-1         stringr_1.5.1     
-[37] htmlwidgets_1.6.4  MASS_7.3-55        pkgconfig_2.0.3    pillar_1.9.0      
+[37] htmlwidgets_1.6.4  MASS_7.3-61        pkgconfig_2.0.3    pillar_1.9.0      
 [41] gtable_0.3.5       moments_0.14.1     glue_1.8.0         Rcpp_1.0.13       
-[45] xfun_0.47          tibble_3.2.1       tidyselect_1.2.1   rstudioapi_0.16.0 
-[49] rjson_0.2.21       htmltools_0.5.8.1  rmarkdown_2.28     testthat_3.2.1.1  
-[53] signal_1.8-1       compiler_4.3.2     RCurl_1.98-1.16   </code></pre>
+[45] xfun_0.48          tibble_3.2.1       tidyselect_1.2.1   rstudioapi_0.16.0 
+[49] rjson_0.2.23       htmltools_0.5.8.1  rmarkdown_2.28     testthat_3.2.1.1  
+[53] signal_1.8-1       compiler_4.4.1     RCurl_1.98-1.16   </code></pre>
 </div>
 </div>
 
@@ -1234,6 +1234,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
           // target, if specified
           link.setAttribute("target", "_blank");
           if (link.getAttribute("rel") === null) {
@@ -1275,7 +1280,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');

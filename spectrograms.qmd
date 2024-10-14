@@ -1,5 +1,5 @@
 ---
-title: Building spectrograms
+title: <font size="7"><b>Building spectrograms</b></font>
 ---
 
  

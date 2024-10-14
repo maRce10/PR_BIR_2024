@@ -1,40 +1,11 @@
-library(seewave)
+library(audio)
 
-# create sinewave at 440 Hz
-s1 <- sin(2 * pi * 440 * seq(0, 1, length.out = 8000))
+s10 <- load.wave("./examples/Phae.long1.wav")
 
-is.vector(s1)
+str(s10)
 
-oscillo(s1, from = 0, to = 0.1)
-
-
-# load packages
-library(tuneR)
-
-s6 <- readWave("./examples/Phae.long1.wav")
-
-s6
-
-str(s6)
-
-# duration
-length(s6@left) / s6@samp.rate
-
-s_1s <- s6@left[1:s6@samp.rate]
-
-length(s_1s)
-
-s6.2 <- s6[1:s6@samp.rate]
-
-s6.2
-
-range(s6@left)
-s6
-
-2 ^ s6@bit
+attr(s10, "rate")
 
 
-abs(-32768) + 32767 + 1
-
-?Wave
+remove.packages("suwo")
 

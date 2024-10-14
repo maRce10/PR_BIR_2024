@@ -49,5 +49,14 @@
   },
   "r_basics.qmd": {
     "r_basics.html": "e468a86b"
+  },
+  "ohun.qmd": {
+    "ohun.html": "fea64ecf"
+  },
+  "seewave.knit.md": {
+    "seewave.knit.html": "3e6dd689"
+  },
+  "spectrograms.qmd": {
+    "spectrograms.html": "60e63b2b"
   }
 }
