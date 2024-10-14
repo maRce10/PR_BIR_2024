@@ -1,26 +1,26 @@
 {
-    "id": "010BF8D0",
-    "path": "~/Dropbox/courses_and_workshops/Bioacoustics/PR_BIR_2024/annotations.qmd",
-    "project_path": "annotations.qmd",
+    "id": "09CAB910",
+    "path": "~/Dropbox/courses_and_workshops/Bioacoustics/PR_BIR_2024/r_basics.qmd",
+    "project_path": "r_basics.qmd",
     "type": "quarto_markdown",
     "hash": "0",
     "contents": "",
     "dirty": false,
-    "created": 1728842480587.0,
+    "created": 1728864919150.0,
     "source_on_save": false,
-    "relative_order": 5,
+    "relative_order": 8,
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "500,94",
-        "scrollLine": "498"
+        "cursorPosition": "0,0",
+        "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1728842534,
+    "lastKnownWriteTime": 1726352301,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1728842534396,
+    "last_content_update": 1726352301,
     "read_only": false,
     "read_only_alternatives": []
 }
