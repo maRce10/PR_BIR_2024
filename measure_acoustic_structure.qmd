@@ -16,7 +16,7 @@ library(kableExtra)
 library(viridis)
 library(ggplot2)
 library(ggalign)
-
+library(PhenotypeSpace)
 ```
 
 
@@ -57,7 +57,7 @@ library(warbleR)
 library(viridis)
 library(ggplot2)
 library(ggalign)
-
+library(PhenotypeSpace)
 
 warbleR_options(wav.path = "./examples/", flim = c(1, 10), wl = 200, ovlp = 90, pb = FALSE)
 
@@ -236,13 +236,8 @@ We can easily measure them as follows:
 
 ```{r, eval= FALSE, echo=TRUE, warning=FALSE, message=FALSE}
 
-library(warbleR)
-
 # load examples
 data("lbh_selec_table")
-
-# global parameters
-warbleR_options(wav.path = "./examples", flim = c(1, 10), wl = 200, ovlp = 90, pb = FALSE)
 
 sp <- spectro_analysis(lbh_selec_table)
 
@@ -858,7 +853,7 @@ box_css = "border: 1px solid #ddd; padding: 5px; ", extra_css = NULL)
 
  
 
-<img src="images/response_thyroptera.png" alt="viewSpec" width="640"/>
+<img src="images/response_thyroptera2.png" alt="viewSpec" width="640"/>
 
  
 
