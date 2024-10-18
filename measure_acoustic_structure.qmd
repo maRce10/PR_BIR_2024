@@ -297,9 +297,17 @@ The acoustic space described by this data can be easily visualized with a scatte
 
 
 ```{r}
-ggplot(sp_pcs, aes(x = PC1, y = PC2, color = sound.files, shape =  sound.files)) +
+ggplot(sp_pcs,
+       aes(
+         x = PC1,
+         y = PC2,
+         color = sound.files,
+         shape =  sound.files
+       )) +
   geom_point(size = 5) +
-  scale_color_viridis_d(option = "G", end = 0.9, direction = -1) +
+  scale_color_viridis_d(option = "G",
+                        end = 0.9,
+                        direction = -1) +
   theme_classic() +
   labs(x = "PC1", y = "PC2") +
   theme(legend.position = "right")
@@ -385,9 +393,17 @@ box_css = "border: 1px solid #ddd; padding: 5px; ", extra_css = NULL)
 Again, this simplified acoustic space can be easily visualized with a scatterplot: 
 
 ```{r}
-ggplot(cc_pcs, aes(x = PC1, y = PC2, color = sound.files, shape =  sound.files)) +
+ggplot(cc_pcs,
+       aes(
+         x = PC1,
+         y = PC2,
+         color = sound.files,
+         shape =  sound.files
+       )) +
   geom_point(size = 5) +
-  scale_color_viridis_d(option = "G", end = 0.9, direction = -1) +
+  scale_color_viridis_d(option = "G",
+                        end = 0.9,
+                        direction = -1) +
   theme_classic() +
   labs(x = "PC1", y = "PC2") +
   theme(legend.position = "right")
@@ -424,9 +440,14 @@ The similarity matrix returned by the function can be visualized as a heatmap:
 ```{r}
 
 # present xcor as a heatmap using ggplot2
-  ggheatmap(xcor) +
-    scale_fill_viridis_c(option = "G", direction = 1, begin = 0.1, end = 0.8) +
-    scale_x_reverse(expand = expansion())
+ggheatmap(xcor) +
+  scale_fill_viridis_c(
+    option = "G",
+    direction = 1,
+    begin = 0.1,
+    end = 0.8
+  ) +
+  theme(axis.text.x = element_text(angle = 90))
 ```
 The acoustic space defined by the pairwise similarities can be projected into two axis using multidimensional scaling:
 
@@ -469,9 +490,17 @@ box_css = "border: 1px solid #ddd; padding: 5px; ", extra_css = NULL)
 Note that the correlations are converted into distance by subtracting them from 1. This simplified acoustic space can also be easily visualized with a scatterplot: 
 
 ```{r}
-ggplot(xcor_mds, aes(x = mds.1, y = mds.2, color = sound.files, shape =  sound.files)) +
+ggplot(xcor_mds,
+       aes(
+         x = mds.1,
+         y = mds.2,
+         color = sound.files,
+         shape =  sound.files
+       )) +
   geom_point(size = 5) +
-  scale_color_viridis_d(option = "G", end = 0.9, direction = -1) +
+  scale_color_viridis_d(option = "G",
+                        end = 0.9,
+                        direction = -1) +
   theme_classic() +
   labs(x = "MDS1", y = "MDS2") +
   theme(legend.position = "right")
@@ -537,9 +566,15 @@ The DTW distance matrix returned by the function can also be visualized as a hea
 ```{r}
 
 # present xcor as a heatmap using ggplot2
-  ggheatmap(dtw_dist) +
-    scale_fill_viridis_c(option = "G", direction = -1, begin = 0.1, end = 0.8) +
-    scale_x_reverse(expand = expansion())
+ggheatmap(dtw_dist) +
+  scale_fill_viridis_c(
+    option = "G",
+    direction = -1,
+    begin = 0.1,
+    end = 0.8
+  ) +
+  theme(axis.text.x = element_text(angle = 90))
+
 ```
 
 Similar to cross-correlation, the acoustic space defined by the pairwise DTW distances can be projected into two axis using multidimensional scaling:
@@ -578,9 +613,17 @@ box_css = "border: 1px solid #ddd; padding: 5px; ", extra_css = NULL)
 And again, this simplified acoustic space can be easily visualized with a scatterplot: 
 
 ```{r}
-ggplot(dtw_mds, aes(x = mds.1, y = mds.2, color = sound.files, shape =  sound.files)) +
+ggplot(dtw_mds,
+       aes(
+         x = mds.1,
+         y = mds.2,
+         color = sound.files,
+         shape =  sound.files
+       )) +
   geom_point(size = 5) +
-  scale_color_viridis_d(option = "G", end = 0.9, direction = -1) +
+  scale_color_viridis_d(option = "G",
+                        end = 0.9,
+                        direction = -1) +
   theme_classic() +
   labs(x = "MDS1", y = "MDS2") +
   theme(legend.position = "right")
