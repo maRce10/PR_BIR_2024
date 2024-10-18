@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-10-17">
+<meta name="dcterms.date" content="2024-10-18">
 
 <title>Bioacoustic data analysis with R 2024 - Measures of acoustic structure</title>
 <style>
@@ -271,7 +271,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 17, 2024</p>
+      <p class="date">October 18, 2024</p>
     </div>
   </div>
   
@@ -4162,48 +4162,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>&nbsp;</p>
 <ul>
 <li><p>What do the <code>length.out</code> argument in<code>freq_DTW()</code>?</p></li>
-<li><p>Calculate spectrographic cross-correlation for the inquiry calls from these individuals: <code>c("206433", "279470", "279533", "279820")</code>. The extended selection table can be downloaded as follows:</p></li>
+<li><p>Calculate spectrographic cross-correlation for the inquiry calls from these individuals: <code>c("206433", "279470", "279533", "279820")</code>. The extended selection table can be downloaded and read as follows:</p></li>
 </ul>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(<span class="at">url =</span> <span class="st">"https://ndownloader.figshare.com/files/21167052"</span>, </span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a> <span class="at">destfile =</span> <span class="st">"iniquiry_calls.RDS"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a> <span class="at">destfile =</span> <span class="st">"./examples/iniquiry_calls.RDS"</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>iniquiry_calls <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"./examples/iniquiry_calls.RDS"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <ul>
-<li>We can use a binary matrix to represent call membership. It has to be a pairwise matrix in which 0 denotes pairs of calls that belong to the same individual and 1 pairs that belong to different individuals. The following function creates this type of matrix:</li>
+<li>We can use a binary matrix to represent call membership. It has to be a pairwise matrix in which 0 denotes pairs of calls that belong to the same individual and 1 pairs that belong to different individuals. The function <code>binary_triangular_matrix</code> from the package <em>PhenotypeSpace</em> creates this type of matrix for representing call membership at the individual level:</li>
 </ul>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#function to create group membership binary matrix</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>bi_mats <span class="ot">&lt;-</span> <span class="cf">function</span>(X, labels) {</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># create empty matrix to store memebership matrix</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">nrow =</span> <span class="fu">ncol</span>(X), <span class="at">ncol =</span> <span class="fu">ncol</span>(X))</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add labels to row and col names</span></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames</span>(mat) <span class="ot">&lt;-</span> <span class="fu">colnames</span>(mat) <span class="ot">&lt;-</span> labels</span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add 0 if same group and 1 if else </span></span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span>(<span class="fu">length</span>(labels) <span class="sc">-</span> <span class="dv">1</span>), <span class="cf">function</span>(i){</span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sapply</span>((i <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">:</span><span class="fu">length</span>(labels), <span class="cf">function</span>(j) </span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (labels[i] <span class="sc">==</span> labels[j]) <span class="dv">0</span> <span class="cf">else</span> <span class="dv">1</span>)  </span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>    })</span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add to mat</span></span>
-<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>  mat[<span class="fu">lower.tri</span>(mat)] <span class="ot">&lt;-</span> <span class="fu">unlist</span>(out)</span>
-<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># retunr as distance matrix</span></span>
-<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">as.dist</span>(mat))</span>
-<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>  }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>bi_mat <span class="ot">&lt;-</span> <span class="fu">binary_triangular_matrix</span>(iniquiry_calls<span class="sc">$</span>indiv)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>The function takes as arguments the cross-correlation similarity matrix (‘X’ argument) and a label vector indicating group membership (‘labels’ argument). Compare dissimilarity from cross-correlation (1 - correlation matrix) with call membership using Mantel test (you can use <code>vegan::mantel()</code>)</p>
+<p>Compare dissimilarity from cross-correlation (1 - correlation matrix) with individual call membership matrix using Mantel test (you can use <code>vegan::mantel()</code>)</p>
 <p>&nbsp;</p>
 <ul>
-<li><p>Do the same test but this time using cepstral coefficient cross-correlation</p></li>
+<li><p>Do the same test but this time using cepstral coefficient cross-correlation (hint: see argument “type”)</p></li>
 <li><p>Do the same test using dynamic time warping distances</p></li>
 </ul>
 </div>
@@ -5073,7 +5055,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="references" class="level2" data-number="7">
 <h2 data-number="7" class="anchored" data-anchor-id="references"><span class="header-section-number">7</span> References</h2>
 <ol type="1">
-<li><p>Araya-Salas M, A Hernández-Pinsón N RojasΔ, G Chaverri. (2020). <a href="https://marce10.github.io/uploads/m-araya-salas-2020.pdf">Ontogeny of an interactive call-and-response system in Spix’s disc-winged bats. Animal Behaviour.</a></p></li>
+<li><p>Araya-Salas M, A Hernández-Pinsón N Rojas, G Chaverri. (2020). <a href="https://marce10.github.io/uploads/m-araya-salas-2020.pdf">Ontogeny of an interactive call-and-response system in Spix’s disc-winged bats. Animal Behaviour.</a></p></li>
 <li><p>Araya-Salas M, Smith-Vidaurre G (2017) <a href="https://marce10.github.io/uploads/araya-salas-2017-f.pdf">warbleR: An R package to streamline analysis of animal acoustic signals. Methods Ecol Evol 8:184–191.</a></p></li>
 <li><p>Lyon, R. H., &amp; Ordubadi, A. (1982). Use of cepstra in acoustical signal analysis. Journal of Mechanical Design, 104(2), 303-306.</p></li>
 <li><p>Salamon, J., Jacoby, C., &amp; Bello, J. P. (2014). A dataset and taxonomy for urban sound research. In Proceedings of the 22nd ACM international conference on Multimedi. 1041-1044.</p></li>

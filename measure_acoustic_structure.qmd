@@ -638,47 +638,29 @@ ggplot(dtw_mds,
 
 -   What do the `length.out` argument in`freq_DTW()`?
 
--   Calculate spectrographic cross-correlation for the inquiry calls from these individuals: `c("206433", "279470", "279533", "279820")`. The extended selection table can be downloaded as follows:
+-   Calculate spectrographic cross-correlation for the inquiry calls from these individuals: `c("206433", "279470", "279533", "279820")`. The extended selection table can be downloaded and read as follows:
 
 ```{r, eval = FALSE}
 
 download.file(url = "https://ndownloader.figshare.com/files/21167052", 
- destfile = "iniquiry_calls.RDS")
+ destfile = "./examples/iniquiry_calls.RDS")
 
+iniquiry_calls <- readRDS("./examples/iniquiry_calls.RDS")
 ```
 
--   We can use a binary matrix to represent call membership. It has to be a pairwise matrix in which 0 denotes pairs of calls that belong to the same individual and 1 pairs that belong to different individuals. The following function creates this type of matrix:
+-   We can use a binary matrix to represent call membership. It has to be a pairwise matrix in which 0 denotes pairs of calls that belong to the same individual and 1 pairs that belong to different individuals. The function `binary_triangular_matrix` from the package *PhenotypeSpace* creates this type of matrix for representing call membership at the individual level:
 
 ```{r, eval = FALSE}
 
-#function to create group membership binary matrix
-bi_mats <- function(X, labels) {
-  
-  # create empty matrix to store memebership matrix
-  mat <- matrix(nrow = ncol(X), ncol = ncol(X))
- 
-  # add labels to row and col names
-  rownames(mat) <- colnames(mat) <- labels
-  
-  # add 0 if same group and 1 if else 
-  out <- lapply(1:(length(labels) - 1), function(i){
-  sapply((i + 1):length(labels), function(j) 
-    if (labels[i] == labels[j]) 0 else 1)  
-    })
+bi_mat <- binary_triangular_matrix(iniquiry_calls$indiv)
 
-  # add to mat
-  mat[lower.tri(mat)] <- unlist(out)
-
-  # retunr as distance matrix
-  return(as.dist(mat))
-  }
 ```
 
-The function takes as arguments the cross-correlation similarity matrix ('X' argument) and a label vector indicating group membership ('labels' argument). Compare dissimilarity from cross-correlation (1 - correlation matrix) with call membership using Mantel test (you can use `vegan::mantel()`)
+Compare dissimilarity from cross-correlation (1 - correlation matrix) with individual call membership matrix using Mantel test (you can use `vegan::mantel()`)
 
  
 
--   Do the same test but this time using cepstral coefficient cross-correlation
+-   Do the same test but this time using cepstral coefficient cross-correlation (hint: see argument "type")
 
 -   Do the same test using dynamic time warping distances
 :::
@@ -921,7 +903,7 @@ response_calls <- readRDS("./examples/response_calls.RDS")
 
 ## References
 
-1.  Araya-Salas M, A Hernández-Pinsón N RojasΔ, G Chaverri. (2020). [Ontogeny of an interactive call-and-response system in Spix's disc-winged bats. Animal Behaviour.](https://marce10.github.io/uploads/m-araya-salas-2020.pdf)
+1.  Araya-Salas M, A Hernández-Pinsón N Rojas, G Chaverri. (2020). [Ontogeny of an interactive call-and-response system in Spix's disc-winged bats. Animal Behaviour.](https://marce10.github.io/uploads/m-araya-salas-2020.pdf)
 
 2.  Araya-Salas M, Smith-Vidaurre G (2017) [warbleR: An R package to streamline analysis of animal acoustic signals. Methods Ecol Evol 8:184--191.](https://marce10.github.io/uploads/araya-salas-2017-f.pdf)
 
