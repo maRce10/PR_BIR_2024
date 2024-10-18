@@ -316,7 +316,7 @@ Remove segments:
 
 ```{r, eval = TRUE, echo = TRUE, warning = FALSE}
 
-tico4 <- deletew(tico3, output = "Wave", from = duration(tico), to = duration(tico3))
+tico4 <- deletew(tico, output = "Wave", from = 0.55, to = 0.93)
 
 oscillo(tico4)
 
@@ -328,6 +328,8 @@ Add segments of silence:
 
 tico5 <- addsilw(tico, at = "end", d = 1, output = "Wave")
 
+oscillo(tico5)
+
 duration(tico)
 duration(tico5)
 
@@ -338,7 +340,7 @@ duration(tico5)
 ::: {.alert .alert-info}
 <font size="5">Exercise</font>
 
--   The function `rev()` can reverse te order of a vector:
+-   The function `rev()` can reverse the order of a vector:
 
 ```{r}
 

@@ -1,0 +1,9 @@
+Selection	View	Channel	Begin Time (s)	End Time (s)	Low Freq (Hz)	High Freq (Hz)	Begin File
+1	Waveform 1	2	1.380718220	1.502749372	2869.600	6819.900	Phaethornis-squalidus-555876.mp3
+1	Spectrogram 1	2	1.380718220	1.502749372	2869.600	6819.900	Phaethornis-squalidus-555876.mp3
+2	Waveform 1	2	1.598816450	1.772775752	4993.800	5776.400	Phaethornis-squalidus-555876.mp3
+2	Spectrogram 1	2	1.598816450	1.772775752	4993.800	5776.400	Phaethornis-squalidus-555876.mp3
+3	Waveform 1	2	1.841580551	1.945436850	2012.400	2981.400	Phaethornis-squalidus-555876.mp3
+3	Spectrogram 1	2	1.841580551	1.945436850	2012.400	2981.400	Phaethornis-squalidus-555876.mp3
+4	Waveform 1	2	0.597173724	0.597173724	12562.500	12562.500	Phaethornis-squalidus-555876.mp3
+4	Spectrogram 1	2	0.597173724	0.597173724	12562.500	12562.500	Phaethornis-squalidus-555876.mp3

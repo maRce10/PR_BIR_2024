@@ -83,7 +83,7 @@ date: "`r Sys.Date()`"
 
 2.  Subset the data frame returned by the function to get a subset of subspecies/populations or recordings from a specific country and for certain vocalization type (using base R subsetting tools)
 
-3.  Download the associated recordings using `query_xenocanto()` again
+3.  Download the associated recordings using `download_media()` again
 
 4.  Explore the recordings with any spectrogram creating GUI program
 :::

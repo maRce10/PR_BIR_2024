@@ -1,0 +1,4 @@
+Begin Time (s)	End Time (s)	Begin File	Begin Path	File Offset (s)	Selection	View	Channel	Low Freq (Hz)	High Freq (Hz)	channel	old.selec
+1.51681158447286	1.66223649507002	Phae.long4.wav	/home/marce/Dropbox/courses_and_workshops/Bioacoustics/PR_BIR_2024/examples/Phae.long4.wav	1.51681158447286	9	Spectrogram 1	1	2513.99658299382	9216.58562228939	1	1
+2.93269198313136	3.07687843223614	Phae.long4.wav	/home/marce/Dropbox/courses_and_workshops/Bioacoustics/PR_BIR_2024/examples/Phae.long4.wav	2.93269198313136	10	Spectrogram 1	1	2579.70824024182	10235.1163096333	1	2
+0.145397660251226	0.290496587417111	Phae.long4.wav	/home/marce/Dropbox/courses_and_workshops/Bioacoustics/PR_BIR_2024/examples/Phae.long4.wav	0.145397660251226	11	Spectrogram 1	1	2579.70824024182	9742.27888027336	1	3

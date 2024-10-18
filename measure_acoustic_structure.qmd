@@ -1,8 +1,24 @@
 ---
 title: <font size="7"><b>Measures of acoustic structure</b></font>
+editor_options: 
+  chunk_output_type: console
 ---
 
  
+
+
+```{r clean session, echo=F, warning=FALSE, message=FALSE}
+
+knitr::opts_chunk$set(dpi = 200)
+
+library(warbleR)
+library(kableExtra)
+library(viridis)
+library(ggplot2)
+library(ggalign)
+
+```
+
 
 ::: {.alert .alert-info}
 ## **Objetives** {.unnumbered .unlisted}
@@ -27,6 +43,94 @@ The other 2 provide a relative similarity value between signals:
 
 -   Spectrographic cross-correlation
 -   Dynamic time warping
+
+
+::: {.alert .alert-warning}
+## Example data
+
+We will use the example data `lbh_selec_table` that comes with the package. This data frame contains the selection table of 11 long-billed hermit (*Phaethornis longirostris*) songs. The selection table is a data frame with the following columns:
+
+```{r}
+#| eval=FALSE
+
+library(warbleR)
+library(viridis)
+library(ggplot2)
+library(ggalign)
+
+
+warbleR_options(wav.path = "./examples/", flim = c(1, 10), wl = 200, ovlp = 90, pb = FALSE)
+
+data(lbh_selec_table)
+
+lbh_selec_table
+```
+
+
+```{r, echo=FALSE}
+
+warbleR_options(wav.path = "./examples/", flim = c(1, 10), wl = 200, ovlp = 90, pb = FALSE)
+
+data(lbh_selec_table)
+
+kbl <- kable(lbh_selec_table, align = "c", row.names = F,  format = "html")
+
+kbl <- kable_styling(kbl, bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = FALSE, font_size = 11)
+
+scroll_box(kbl, width = "808px",
+box_css = "border: 1px solid #ddd; padding: 5px; ", extra_css = NULL)
+
+```
+
+This is a catalog (made with the `catalog()` function) with the spectrograms of all sounds referenced in the selection table (*the function saves the image file(s) in the folder in which the sound files are found*):
+
+```{r}
+#| eval=FALSE
+
+# make a color pallete for tagging spectrograms
+tag_pal <- function(x)
+  mako(x,
+       alpha = 0.6,
+       begin = 0.1,
+       end = 0.9)
+
+# plot all annotation spectrograms in a catalog
+catalog(
+  lbh_selec_table,
+  flim = c(1.5, 10),
+  wl = 200,
+  ovlp = 90,
+  nrow = 4,
+  ncol = 3,
+  width = 12,
+  height = 8,
+  pb = FALSE,
+  same.time.scale = TRUE,
+  mar = 0.02,
+  pal = mako,
+  collevels = seq(-120, 0, 1),
+  group.tag = "sound.files",
+  tag.pal = list(tag_pal),
+  spec.mar = 0.6,
+  box = FALSE,
+  res = 200
+)
+
+
+```
+
+
+```{r}
+#| echo: false
+#| out.width: "100%"
+
+knitr::include_graphics("./images/Catalog_p1.jpeg")
+
+```
+
+  It is clear that each sound file contains a different variant of the song. We will use these data to illustrate the different methods of acoustic structure analysis available in **warbleR**.
+
+:::
 
 ## Spectrographic parameters
 
@@ -130,23 +234,6 @@ The `spectro_analysis()` function measures the following spectrographic paramete
 
 We can easily measure them as follows:
 
-```{r clean session, echo=F, warning=FALSE, message=FALSE}
-
-rm(list = ls())
-
-# unload all non-based packages
-out <- sapply(paste('package:', names(sessionInfo()$otherPkgs), sep = ""), function(x) try(detach(x, unload = FALSE, character.only = TRUE), silent = T))
-
-knitr::opts_chunk$set(dpi = 200)
-
-library(warbleR)
-
-library(kableExtra)
-
-warbleR_options(wav.path = "./examples/", flim = c(1, 10), wl = 200, ovlp = 90, pb = FALSE)
-
-```
-
 ```{r, eval= FALSE, echo=TRUE, warning=FALSE, message=FALSE}
 
 library(warbleR)
@@ -176,14 +263,56 @@ box_css = "border: 1px solid #ddd; padding: 5px; ", extra_css = NULL)
 
 ```
 
- 
+We can reduce the dimensionality using Principal component analysis (PCA):
+```{r}
+#| eval: false
+
+# run principal components
+pca <- prcomp(sp[, -c(1, 2)], scale = TRUE)
+
+# extract first 2 PCs
+sp_pcs <- data.frame(sp[, 1:2], pca$x[, 1:2])
+
+sp_pcs
+```
+```{r}
+#| echo: false
+
+# run principal components
+pca <- prcomp(sp[, -c(1, 2)], scale = TRUE)
+
+# extract first 2 PCs
+sp_pcs <- data.frame(sp[, 1:2], pca$x[, 1:2])
+
+kbl <- kable(sp_pcs, align = "c", row.names = F,  format = "html")
+
+kbl <- kable_styling(kbl, bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = FALSE, font_size = 11)
+
+scroll_box(kbl, width = "808px",
+box_css = "border: 1px solid #ddd; padding: 5px; ", extra_css = NULL)
+
+```
+
+The acoustic space described by this data can be easily visualized with a scatterplot: 
+
+
+```{r}
+ggplot(sp_pcs, aes(x = PC1, y = PC2, color = sound.files, shape =  sound.files)) +
+  geom_point(size = 5) +
+  scale_color_viridis_d(option = "G", end = 0.9, direction = -1) +
+  theme_classic() +
+  labs(x = "PC1", y = "PC2") +
+  theme(legend.position = "right")
+
+```
+
+
 
 ::: {.alert .alert-info}
 <font size="5">Exercise</font>
 
- 
 
--   The parameters related to harmonic content were not calculated. How can I have do that?
+-   The parameters related to harmonic content were not calculated. How can we do that?
 
 -   How does measuring harmonic content affect performance?
 
@@ -221,7 +350,49 @@ box_css = "border: 1px solid #ddd; padding: 5px; ", extra_css = NULL)
 
 ```
 
- 
+Similarly to the spectrographic parameters, we can reduce the dimensionality of the cepstral coefficients using PCA:
+
+```{r}
+#| eval: false
+
+# run principal components
+pca <- prcomp(cc[, -c(1, 2)], scale = TRUE)
+
+# extract first 2 PCs
+cc_pcs <- data.frame(cc[, 1:2], pca$x[, 1:2])
+
+cc_pcs
+```
+
+```{r}
+#| echo: false
+
+# run principal components
+pca <- prcomp(cc[, -c(1, 2)], scale = TRUE)
+
+# extract first 2 PCs
+cc_pcs <- data.frame(cc[, 1:2], pca$x[, 1:2])
+
+kbl <- kable(cc_pcs, align = "c", row.names = F,  format = "html")
+
+kbl <- kable_styling(kbl, bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = FALSE, font_size = 11)
+
+scroll_box(kbl, width = "808px",
+box_css = "border: 1px solid #ddd; padding: 5px; ", extra_css = NULL)
+
+```
+
+Again, this simplified acoustic space can be easily visualized with a scatterplot: 
+
+```{r}
+ggplot(cc_pcs, aes(x = PC1, y = PC2, color = sound.files, shape =  sound.files)) +
+  geom_point(size = 5) +
+  scale_color_viridis_d(option = "G", end = 0.9, direction = -1) +
+  theme_classic() +
+  labs(x = "PC1", y = "PC2") +
+  theme(legend.position = "right")
+
+```
 
 ## (Spectrographic) cross correlation
 
@@ -247,43 +418,46 @@ box_css = "border: 1px solid #ddd; padding: 5px; ", extra_css = NULL)
 
 ```
 
- 
 
-Spectrographic cross-correlation is the standard way to calculate signal similarity for amplitude variation in frequency and time
+The similarity matrix returned by the function can be visualized as a heatmap:
 
-::: {.alert .alert-info}
-<font size="5">Exercise</font>
+```{r}
 
- 
+# present xcor as a heatmap using ggplot2
+  ggheatmap(xcor) +
+    scale_fill_viridis_c(option = "G", direction = 1, begin = 0.1, end = 0.8) +
+    scale_x_reverse(expand = expansion())
+```
+The acoustic space defined by the pairwise similarities can be projected into two axis using multidimensional scaling:
 
--   What does the argument `type` do and how does it affect the performance of the function?
+```{r}
+#| eval: false
 
--   What does the `pb` argument do?
-:::
+# convert into distances
+xcor_dist <- 1 - xcor
 
- 
+# multidimensional scaling
+mds <- cmdscale(xcor_dist, k = 2)
 
-## Dynamic time warping
+# extract first 2 vectors
+xcor_mds <- data.frame(lbh_selec_table[, 1:2], mds = mds[, 1:2])
 
-In time series analysis, time dynamics distortion (DTW) is one of the algorithms to measure the similarity between two time sequences, which may vary in their 'speed'. The sequences are nonlinearly 'warped' in the temporal dimension to determine a measure of their similarity independent of certain nonlinear variations in the temporal dimension.
-
-<img src="images/dtw.jpg" alt="viewSpec" width="640"/>
-
- 
-
-The `freq_DTW()` function extracts the dominant frequency values as a time series and then calculates the acoustic dissimilarity using dynamic time warping. The function uses the `approx()` function to interpolate values between the dominant frequency measurements:
-
-```{r measure, eval = FALSE}
-
-dtwdist <- freq_DTW(lbh_selec_table)
-
+# print
+xcor_mds
 ```
 
-```{r measure 2, echo=FALSE}
+```{r}
+#| echo: false
 
-dtwdist <- freq_DTW(lbh_selec_table)
+# convert into distances
+xcor_dist <- 1 - xcor
 
-kbl <- kable(dtwdist, align = "c", row.names = TRUE,  format = "html")
+# multidimensional scaling
+mds <- cmdscale(xcor_dist, k = 2)
+
+# extract first 2 vectors
+xcor_mds <- data.frame(lbh_selec_table[, 1:2], mds = mds[, 1:2])
+kbl <- kable(xcor_mds, align = "c", row.names = F,  format = "html")
 
 kbl <- kable_styling(kbl, bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = FALSE, font_size = 11)
 
@@ -292,7 +466,55 @@ box_css = "border: 1px solid #ddd; padding: 5px; ", extra_css = NULL)
 
 ```
 
- 
+Note that the correlations are converted into distance by subtracting them from 1. This simplified acoustic space can also be easily visualized with a scatterplot: 
+
+```{r}
+ggplot(xcor_mds, aes(x = mds.1, y = mds.2, color = sound.files, shape =  sound.files)) +
+  geom_point(size = 5) +
+  scale_color_viridis_d(option = "G", end = 0.9, direction = -1) +
+  theme_classic() +
+  labs(x = "MDS1", y = "MDS2") +
+  theme(legend.position = "right")
+
+```
+
+::: {.alert .alert-info}
+<font size="5">Exercise</font>
+
+- What does the argument `type` do and how does it affect the performance of the function?
+
+- What does the `pb` argument do?
+:::
+
+
+## Dynamic time warping
+
+In time series analysis, time dynamics distortion (DTW) is one of the algorithms to measure the similarity between two time sequences, which may vary in their 'speed'. The sequences are nonlinearly 'warped' in the temporal dimension to determine a measure of their similarity independent of certain nonlinear variations in the temporal dimension.
+
+<img src="images/dtw.jpg" alt="viewSpec" width="640"/>
+
+
+The `freq_DTW()` function extracts the dominant frequency values as a time series and then calculates the acoustic dissimilarity using dynamic time warping. The function uses the `approx()` function to interpolate values between the dominant frequency measurements:
+
+```{r measure, eval = FALSE}
+
+dtw_dist <- freq_DTW(lbh_selec_table)
+
+```
+
+```{r measure 2, echo=FALSE}
+
+dtw_dist <- freq_DTW(lbh_selec_table)
+
+kbl <- kable(dtw_dist, align = "c", row.names = TRUE,  format = "html")
+
+kbl <- kable_styling(kbl, bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = FALSE, font_size = 11)
+
+scroll_box(kbl, width = "808px",
+box_css = "border: 1px solid #ddd; padding: 5px; ", extra_css = NULL)
+
+```
+
 
 The function returns a matrix with paired dissimilarity values.
 
@@ -310,7 +532,61 @@ freq_DTW(lbh_selec_table, img = TRUE, col = "red", pch = 21, line = FALSE)
 
 Frequency contours can be calculated independently using the `freq_ts()` function. These contours can be adjusted manually with the `tailor_sels()` function.
 
- 
+The DTW distance matrix returned by the function can also be visualized as a heatmap:
+
+```{r}
+
+# present xcor as a heatmap using ggplot2
+  ggheatmap(dtw_dist) +
+    scale_fill_viridis_c(option = "G", direction = -1, begin = 0.1, end = 0.8) +
+    scale_x_reverse(expand = expansion())
+```
+
+Similar to cross-correlation, the acoustic space defined by the pairwise DTW distances can be projected into two axis using multidimensional scaling:
+
+```{r}
+#| eval: false
+
+# multidimensional scaling
+mds <- cmdscale(dtw_dist, k = 2)
+
+# extract first 2 vectors
+dtw_mds <- data.frame(lbh_selec_table[, 1:2], mds = mds[, 1:2])
+
+# print
+dtw_mds
+```
+
+```{r}
+#| echo: false
+
+# multidimensional scaling
+mds <- cmdscale(dtw_dist, k = 2)
+
+# extract first 2 vectors
+dtw_mds <- data.frame(cc[, 1:2], mds = mds[, 1:2])
+
+kbl <- kable(dtw_mds, align = "c", row.names = F,  format = "html")
+
+kbl <- kable_styling(kbl, bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = FALSE, font_size = 11)
+
+scroll_box(kbl, width = "808px",
+box_css = "border: 1px solid #ddd; padding: 5px; ", extra_css = NULL)
+
+```
+
+And again, this simplified acoustic space can be easily visualized with a scatterplot: 
+
+```{r}
+ggplot(dtw_mds, aes(x = mds.1, y = mds.2, color = sound.files, shape =  sound.files)) +
+  geom_point(size = 5) +
+  scale_color_viridis_d(option = "G", end = 0.9, direction = -1) +
+  theme_classic() +
+  labs(x = "MDS1", y = "MDS2") +
+  theme(legend.position = "right")
+
+```
+
 
 ::: {.alert .alert-info}
 <font size="5">Exercise</font>

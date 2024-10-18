@@ -58,6 +58,7 @@ load_packages(packages = c(
   "phonTools",
   "soundgen",
   "audio",
+  "ggalign",
   github = "maRce10/warbleR",
   github = "maRce10/Rraven",
   github = "maRce10/ohun",
