@@ -853,7 +853,7 @@ box_css = "border: 1px solid #ddd; padding: 5px; ", extra_css = NULL)
 
  
 
-<img src="images/response_thyroptera2.png" alt="viewSpec" width="640"/>
+<img src="images/response_thyroptera2.png" alt="viewSpec" width="100%"/>
 
  
 
