@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-10-14">
+<meta name="dcterms.date" content="2024-10-21">
 
 <title>Bioacoustic data analysis with R 2024 - ohun: optimizing acoustic signal detection</title>
 <style>
@@ -272,7 +272,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 14, 2024</p>
+      <p class="date">October 21, 2024</p>
     </div>
   </div>
   
@@ -291,16 +291,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Learn how to run automatic detection using the package ohun</p></li>
 </ul>
 </section>
-<p>&nbsp;</p>
 <p><a href="https://docs.ropensci.org/ohun/">ohun</a> is intended to facilitate the automated detection of sound events, providing functions to diagnose and optimize detection routines. Detections from other software can also be explored and optimized.</p>
-<p>&nbsp;</p>
 <div class="alert alert-warning">
 <p><font size="4">The main features of the package are: </font></p>
 <ul>
 <li>The use of reference annotations for detection optimization and diagnostic</li>
 <li>The use of signal detection theory indices to evaluate detection performance</li>
 </ul>
-<p>&nbsp;</p>
 <p><font size="4">The package offers functions for: </font></p>
 <ul>
 <li>Curate references and acoustic data sets</li>
@@ -324,7 +321,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(warbleR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>&nbsp;</p>
 <hr>
 <section id="automatic-sound-event-detection" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Automatic sound event detection</h1>
@@ -538,8 +534,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
 <p>All <a href="https://github.com/maRce10/ohun">ohun</a> functions that work with this kind of data can take both selection tables and data frames. Spectrograms with highlighted sound events from a selection table can be plotted with the function <code>label_spectro()</code> (this function only plots one wave object at the time):</p>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold">
@@ -594,33 +588,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># diagnose</span></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">diagnose_detection</span>(<span class="at">reference =</span> lbh1_reference, </span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>                   <span class="at">detection =</span> lbh1_reference)[, <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">7</span><span class="sc">:</span><span class="dv">9</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>                   <span class="at">detection =</span> lbh1_reference)[, <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">8</span><span class="sc">:</span><span class="dv">10</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="table table-sm table-striped small">
 <colgroup>
-<col style="width: 16%">
-<col style="width: 22%">
-<col style="width: 23%">
-<col style="width: 11%">
-<col style="width: 10%">
-<col style="width: 14%">
+<col style="width: 13%">
+<col style="width: 18%">
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 8%">
+<col style="width: 12%">
+<col style="width: 9%">
 </colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: right;">detections</th>
 <th style="text-align: right;">true.positives</th>
 <th style="text-align: right;">false.positives</th>
-<th style="text-align: right;">overlap</th>
+<th style="text-align: right;">false.negatives</th>
 <th style="text-align: right;">recall</th>
 <th style="text-align: right;">precision</th>
+<th style="text-align: right;">f.score</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: right;">10</td>
 <td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">1</td>
@@ -631,7 +628,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>&nbsp;</p>
 <p>We will work mostly with a single sound file for convenience but the functions can work on several sound files at the time. The files should be found in a single working directory. Although the above example is a bit silly, it shows the basic diagnostic indices, which include basic detection theory indices (‘true.positives’, ‘false.positives’, ‘false.negatives’, ‘recall’ and ‘precision’) mentioned above. We can play around with the reference table to see how these indices can be used to spot imperfect detection routines (and hopefully improve them!). For instance, we can remove some sound events to see how this is reflected in the diagnostics. Getting rid of some rows in ‘detection’, simulating a detection with some false negatives, will affect the recall but not the precision:</p>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold">
@@ -660,27 +656,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># diagnose</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">diagnose_detection</span>(<span class="at">reference =</span> lbh1_reference, </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">detection =</span> lbh1_detection)[, <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">7</span><span class="sc">:</span><span class="dv">9</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">detection =</span> lbh1_detection)[, <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">8</span><span class="sc">:</span><span class="dv">10</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="table table-sm table-striped small">
 <colgroup>
-<col style="width: 16%">
-<col style="width: 22%">
-<col style="width: 23%">
+<col style="width: 12%">
+<col style="width: 17%">
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 8%">
 <col style="width: 11%">
-<col style="width: 10%">
-<col style="width: 14%">
+<col style="width: 11%">
 </colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: right;">detections</th>
 <th style="text-align: right;">true.positives</th>
 <th style="text-align: right;">false.positives</th>
-<th style="text-align: right;">overlap</th>
+<th style="text-align: right;">false.negatives</th>
 <th style="text-align: right;">recall</th>
 <th style="text-align: right;">precision</th>
+<th style="text-align: right;">f.score</th>
 </tr>
 </thead>
 <tbody>
@@ -688,16 +686,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">7</td>
 <td style="text-align: right;">7</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
 <td style="text-align: right;">0.7</td>
 <td style="text-align: right;">1</td>
+<td style="text-align: right;">0.8235294</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
-<p>&nbsp;</p>
 <p>Having some additional sound events not in reference will do the opposite, reducing precision but not recall. We can do this simply by switching the tables:</p>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold">
@@ -723,27 +721,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># diagnose</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">diagnose_detection</span>(<span class="at">reference =</span> lbh1_detection, </span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">detection =</span> lbh1_reference)[, <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">7</span><span class="sc">:</span><span class="dv">9</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">detection =</span> lbh1_reference)[, <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">8</span><span class="sc">:</span><span class="dv">10</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="table table-sm table-striped small">
 <colgroup>
-<col style="width: 16%">
-<col style="width: 22%">
-<col style="width: 23%">
+<col style="width: 12%">
+<col style="width: 17%">
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 8%">
 <col style="width: 11%">
-<col style="width: 10%">
-<col style="width: 14%">
+<col style="width: 11%">
 </colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: right;">detections</th>
 <th style="text-align: right;">true.positives</th>
 <th style="text-align: right;">false.positives</th>
-<th style="text-align: right;">overlap</th>
+<th style="text-align: right;">false.negatives</th>
 <th style="text-align: right;">recall</th>
 <th style="text-align: right;">precision</th>
+<th style="text-align: right;">f.score</th>
 </tr>
 </thead>
 <tbody>
@@ -751,16 +751,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">10</td>
 <td style="text-align: right;">7</td>
 <td style="text-align: right;">3</td>
-<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">0.7</td>
+<td style="text-align: right;">0.8235294</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
-<p>&nbsp;</p>
 <p>The function offers three additional diagnose metrics:</p>
 <ul>
 <li><strong>Split positives</strong>: target sound events overlapped by more than 1 detecion</li>
@@ -850,7 +850,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>&nbsp;</p>
 <p>In addition, the following diagnostics related to the duration of the sound events can also be returned by setting <code>time.diagnostics = TRUE</code>. Here we tweak the reference and detection data just to have some false positives and false negatives:</p>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold">
@@ -917,7 +916,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>&nbsp;</p>
 <p>These additional metrics can be used to further filter out undesired sound events based on their duration (for instance in a energy-based detection as in <code>energy_detector()</code>, explained below).</p>
 <p>Diagnostics can also be detailed by sound file:</p>
 <div class="cell" data-layout-align="center">
@@ -981,7 +979,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>&nbsp;</p>
 <p>These diagnostics can be summarized (as in the default <code>diagnose_detection()</code> output) with the function <code>summarize_diagnostic()</code>:</p>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold">
@@ -1036,7 +1033,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>&nbsp;</p>
 </section>
 <section id="detecting-sound-events-with-ohun" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Detecting sound events with <em>ohun</em></h1>
@@ -1068,9 +1064,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>&nbsp;</p>
 <p>This type of detector doesn’t require highly stereotyped sound events, although they work better on high quality recordings in which the amplitude of target sound events is higher than the background noise (i.e.&nbsp;high signal-to-noise ratio). The function <code>energy_detector()</code> performs this type of detection.</p>
-<p>&nbsp;</p>
 <section id="how-it-works" class="level3" data-number="3.1.1">
 <h3 data-number="3.1.1" class="anchored" data-anchor-id="how-it-works"><span class="header-section-number">3.1.1</span> How it works</h3>
 <p>We can understand how to use <code>energy_detector()</code> using simulated sound events. We will do that using the function <code>simulate_songs()</code> from <a href="https://CRAN.R-project.org/package=warbleR">warbleR</a>. In this example we simulate a recording with 10 sounds with two different frequency ranges and durations:</p>
@@ -1083,28 +1077,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Creating vector for duration </span></span>
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>durs <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="fl">0.3</span>, <span class="dv">1</span>), <span class="dv">5</span>)</span>
 <span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Creating simulated song</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12</span>)</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>simulated_1 <span class="ot">&lt;-</span></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  warbleR<span class="sc">::</span><span class="fu">simulate_songs</span>(</span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="dv">10</span>,</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">durs =</span> durs,</span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">freqs =</span> <span class="dv">5</span>,</span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">sig2 =</span> <span class="fl">0.01</span>,</span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">gaps =</span> <span class="fl">0.5</span>,</span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">harms =</span> <span class="dv">1</span>,</span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">bgn =</span> <span class="fl">0.1</span>,</span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">path =</span> <span class="fu">tempdir</span>(),</span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">file.name =</span> <span class="st">"simulated_1"</span>,</span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">selec.table =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">shape =</span> <span class="st">"cos"</span>,</span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">fin =</span> <span class="fl">0.3</span>,</span>
-<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">fout =</span> <span class="fl">0.35</span>,</span>
-<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">samp.rate =</span> <span class="dv">18</span></span>
-<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">$</span>wave</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>freqs <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">6</span>), <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co">#Creating simulated song</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12</span>)</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>simulated_1 <span class="ot">&lt;-</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  warbleR<span class="sc">::</span><span class="fu">simulate_songs</span>(</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="dv">10</span>,</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">durs =</span> durs,</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">freqs =</span> freqs,</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">sig2 =</span> <span class="fl">0.1</span>,</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">gaps =</span> <span class="fl">0.5</span>,</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">harms =</span> <span class="dv">1</span>,</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">bgn =</span> <span class="fl">0.1</span>,</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">freq.range =</span> <span class="dv">2</span>,</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">path =</span> <span class="fu">tempdir</span>(),</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">file.name =</span> <span class="st">"simulated_1"</span>,</span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">selec.table =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">shape =</span> <span class="st">"cos"</span>,</span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">fin =</span> <span class="fl">0.3</span>,</span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">fout =</span> <span class="fl">0.35</span>,</span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">samp.rate =</span> <span class="dv">18</span></span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">$</span>wave</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>&nbsp;</p>
 <p>The function call saves a ‘.wav’ sound file in a temporary directory (<code>tempdir()</code>) and also returns a <code>wave</code> object in the R environment. This outputs will be used to run energy-based detection and creating plots, respectively. This is how the spectrogram and amplitude envelope of the simulated recording look like:</p>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold">
@@ -1122,7 +1119,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>&nbsp;</p>
 <p>Note that the amplitude envelope shows a high signal-to-noise ratio of the sound events, which is ideal for energy-based detection. This can be conducted using <code>energy_detector()</code> as follows:</p>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold">
@@ -1153,7 +1149,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>&nbsp;</p>
 <p>The output is a selection table:</p>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold">
@@ -1175,80 +1170,80 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">simulated_1.wav</td>
-<td style="text-align: right;">0.2323344</td>
+<td style="text-align: right;">0.2325011</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">0.5313358</td>
-<td style="text-align: right;">0.7636702</td>
+<td style="text-align: right;">0.5313913</td>
+<td style="text-align: right;">0.7638924</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">simulated_1.wav</td>
-<td style="text-align: right;">0.7935037</td>
+<td style="text-align: right;">0.7943370</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">1.3958954</td>
-<td style="text-align: right;">2.1893990</td>
+<td style="text-align: right;">1.3954509</td>
+<td style="text-align: right;">2.1897879</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">simulated_1.wav</td>
-<td style="text-align: right;">0.2324455</td>
+<td style="text-align: right;">0.2331677</td>
 <td style="text-align: right;">3</td>
-<td style="text-align: right;">2.8311242</td>
-<td style="text-align: right;">3.0635697</td>
+<td style="text-align: right;">2.8307909</td>
+<td style="text-align: right;">3.0639586</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">simulated_1.wav</td>
-<td style="text-align: right;">0.7930592</td>
+<td style="text-align: right;">0.7942259</td>
 <td style="text-align: right;">4</td>
-<td style="text-align: right;">3.6961282</td>
-<td style="text-align: right;">4.4891875</td>
+<td style="text-align: right;">3.6956838</td>
+<td style="text-align: right;">4.4899097</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">simulated_1.wav</td>
-<td style="text-align: right;">0.2322233</td>
+<td style="text-align: right;">0.2330011</td>
 <td style="text-align: right;">5</td>
-<td style="text-align: right;">5.1312460</td>
-<td style="text-align: right;">5.3634693</td>
+<td style="text-align: right;">5.1310238</td>
+<td style="text-align: right;">5.3640248</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">simulated_1.wav</td>
-<td style="text-align: right;">0.7926703</td>
+<td style="text-align: right;">0.7942259</td>
 <td style="text-align: right;">6</td>
-<td style="text-align: right;">5.9963611</td>
-<td style="text-align: right;">6.7890314</td>
+<td style="text-align: right;">5.9956944</td>
+<td style="text-align: right;">6.7899203</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">simulated_1.wav</td>
-<td style="text-align: right;">0.2321677</td>
+<td style="text-align: right;">0.2331122</td>
 <td style="text-align: right;">7</td>
-<td style="text-align: right;">7.4313122</td>
-<td style="text-align: right;">7.6634799</td>
+<td style="text-align: right;">7.4308677</td>
+<td style="text-align: right;">7.6639799</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">simulated_1.wav</td>
-<td style="text-align: right;">0.7932815</td>
+<td style="text-align: right;">0.7943926</td>
 <td style="text-align: right;">8</td>
-<td style="text-align: right;">8.2962606</td>
-<td style="text-align: right;">9.0895421</td>
+<td style="text-align: right;">8.2956495</td>
+<td style="text-align: right;">9.0900421</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">simulated_1.wav</td>
-<td style="text-align: right;">0.2323344</td>
+<td style="text-align: right;">0.2333900</td>
 <td style="text-align: right;">9</td>
-<td style="text-align: right;">9.7313228</td>
-<td style="text-align: right;">9.9636572</td>
+<td style="text-align: right;">9.7308228</td>
+<td style="text-align: right;">9.9642128</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">simulated_1.wav</td>
-<td style="text-align: right;">0.7925592</td>
+<td style="text-align: right;">0.7940592</td>
 <td style="text-align: right;">10</td>
-<td style="text-align: right;">10.5964379</td>
-<td style="text-align: right;">11.3889972</td>
+<td style="text-align: right;">10.5957713</td>
+<td style="text-align: right;">11.3898305</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
-<p>Now we will make use of some additional arguments to filter out specific sound events based on their structural features. For instance we can use the argument <code>min.duration</code> to provide a time treshold (in ms) to exclude short sound events and keep only the longest sound events:</p>
+<p>Now we will make use of some additional arguments to filter out specific sound events based on their structural features. For instance we can use the argument <code>min.duration</code> to provide a time threshold (in ms) to exclude short sound events and keep only the longest sound events:</p>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -1274,7 +1269,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>&nbsp;</p>
 <p>We can use the argument <code>max.duration</code> (also in ms) to exclude long sound events and keep the short ones:</p>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold">
@@ -1301,7 +1295,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>&nbsp;</p>
 <p>We can also focus the detection on specific frequency ranges using the argument <code>bp</code> (bandpass). By setting <code>bp = c(5, 8)</code> only those sound events found within that frequency range (5-8 kHz) will be detected, which excludes sound events below 5 kHz:</p>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold">
@@ -1327,14 +1320,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>&nbsp;</p>
 <div class="alert alert-info">
 <p><font size="5">Exercise</font></p>
 <ul>
 <li>Detect only the short sound below 5 kHz</li>
 </ul>
 </div>
-<p>&nbsp;</p>
 <p>Amplitude modulation (variation in amplitude across a sound event) can be problematic for detection based on amplitude envelopes. We can also simulate some amplitude modulation using <code>warbleR::simulate_songs()</code>:</p>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold">
@@ -1349,27 +1340,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">simulate_songs</span>(</span>
 <span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="dv">10</span>,</span>
 <span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">durs =</span> durs,</span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">freqs =</span> <span class="dv">5</span>,</span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">sig2 =</span> <span class="fl">0.01</span>,</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">freqs =</span> freqs,</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">sig2 =</span> <span class="fl">0.1</span>,</span>
 <span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">gaps =</span> <span class="fl">0.5</span>,</span>
 <span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">harms =</span> <span class="dv">1</span>,</span>
 <span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">bgn =</span> <span class="fl">0.1</span>,</span>
-<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">path =</span> <span class="fu">tempdir</span>(),</span>
-<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">file.name =</span> <span class="st">"simulated_2"</span>,</span>
-<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">selec.table =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">shape =</span> <span class="st">"cos"</span>,</span>
-<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">fin =</span> <span class="fl">0.3</span>,</span>
-<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">fout =</span> <span class="fl">0.35</span>,</span>
-<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">samp.rate =</span> <span class="dv">18</span>,</span>
-<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">am.amps =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="fl">0.1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
-<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a><span class="co"># extract wave object and selection table</span></span>
-<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a>simulated_2 <span class="ot">&lt;-</span> sim_2<span class="sc">$</span>wave</span>
-<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a>sim2_sel_table <span class="ot">&lt;-</span> sim_2<span class="sc">$</span>selec.table</span>
-<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a><span class="co"># plot spectrogram</span></span>
-<span id="cb23-31"><a href="#cb23-31" aria-hidden="true" tabindex="-1"></a><span class="fu">label_spectro</span>(<span class="at">wave =</span> simulated_2, <span class="at">envelope =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">freq.range =</span> <span class="dv">2</span>,</span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">path =</span> <span class="fu">tempdir</span>(),</span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">file.name =</span> <span class="st">"simulated_2"</span>,</span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">selec.table =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">shape =</span> <span class="st">"cos"</span>,</span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">fin =</span> <span class="fl">0.3</span>,</span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">fout =</span> <span class="fl">0.35</span>,</span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">am.amps =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="fl">0.1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>),</span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">samp.rate =</span> <span class="dv">18</span></span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a><span class="co"># extract wave object and selection table</span></span>
+<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a>simulated_2 <span class="ot">&lt;-</span> sim_2<span class="sc">$</span>wave</span>
+<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a>sim2_sel_table <span class="ot">&lt;-</span> sim_2<span class="sc">$</span>selec.table</span>
+<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-31"><a href="#cb23-31" aria-hidden="true" tabindex="-1"></a><span class="co"># plot spectrogram</span></span>
+<span id="cb23-32"><a href="#cb23-32" aria-hidden="true" tabindex="-1"></a><span class="fu">label_spectro</span>(<span class="at">wave =</span> simulated_2, <span class="at">envelope =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1379,7 +1371,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>&nbsp;</p>
 <p>When sound events have strong amplitude modulation they can be split during detection:</p>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold">
@@ -1398,7 +1389,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>&nbsp;</p>
 <p>There are two arguments that can deal with this: <code>holdtime</code> and <code>smooth</code>. <code>hold.time</code> allows to merge split sound events that are found within a given time range (in ms). This time range should be high enough to merge things belonging to the same sound event but not too high so it merges different sound events. For this example a <code>hold.time</code> of 200 ms can do the trick (we know gaps between sound events are ~0.5 s long):</p>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold">
@@ -1429,7 +1419,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>&nbsp;</p>
 <p><code>smooth</code> works by merging the amplitude envelope ‘hills’ of the split sound events themselves. It smooths envelopes by applying a sliding window averaging of amplitude values. It’s given in ms of the window size. A <code>smooth</code> of 350 ms can merged back split sound events from our example:</p>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold">
@@ -1461,9 +1450,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>&nbsp;</p>
 <p>The function has some additional arguments for further filtering detections (<code>peak.amplitude</code>) and speeding up analysis (<code>thinning</code> and <code>parallel</code>).</p>
-<p>&nbsp;</p>
 </section>
 <section id="optimizing-energy-based-detection" class="level3" data-number="3.1.2">
 <h3 data-number="3.1.2" class="anchored" data-anchor-id="optimizing-energy-based-detection"><span class="header-section-number">3.1.2</span> Optimizing energy-based detection</h3>
@@ -1547,12 +1534,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">15</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">13</td>
-<td style="text-align: right;">8</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">5</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">0.5000949</td>
-<td style="text-align: right;">0.5000949</td>
+<td style="text-align: right;">0.5027431</td>
+<td style="text-align: right;">0.5027431</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">50</td>
@@ -1566,15 +1553,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">0.7205922</td>
-<td style="text-align: right;">0.7830720</td>
+<td style="text-align: right;">0.7228663</td>
+<td style="text-align: right;">0.7845165</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
-<p>&nbsp;</p>
 <p>The output contains the combination of parameters used at each iteration as well as the corresponding diagnose indices. In this case all combinations generate a good detection (recall &amp; precision = 1). However, only the routine with the highest <code>smooth</code> (last row) has no split sound events (‘split.positive’ column). It also shows a better overlap to the reference sound events (‘overlap.to.true.positives’ closer to 1).</p>
 <p>In addition, there are two complementary functions for optimizing energy-based detection routines: <code>feature_reference()</code> and <code>merge_overlaps()</code>. <code>feature_reference()</code> allow user to get a sense of the time and frequency characteristics of a reference table. This information can be used to determine the range of tuning parameter values during optimization. This is the output of the function applied to <code>lbh_reference</code>:</p>
 <div class="cell" data-layout-align="center">
@@ -1593,7 +1579,6 @@ bottom.freq      1.81   2.11   2.37
 top.freq         8.49   8.82   9.53</code></pre>
 </div>
 </div>
-<p>&nbsp;</p>
 <p>Features related to selection duration can be used to set the ‘max.duration’ and ‘min.duration’ values, frequency related features can inform banpass values, gap related features inform hold time values and duty cycle can be used to evaluate performance. Peak amplitude can be used to keep only those sound events with the highest intensity, mostly useful for routines in which only a subset of the target sound events present in the recordings is needed.</p>
 <p><code>merge_overlaps()</code> finds time-overlapping selections in reference tables and collapses them into a single selection. Overlapping selections would more likely appear as a single amplitude ‘hill’ and thus would be detected as a single sound event. So <code>merge_overlaps()</code> can be useful to prepare references in a format representing a more realistic expectation of how a pefect energy detection routine would look like.</p>
 </section>
@@ -1625,7 +1610,6 @@ top.freq         8.49   8.82   9.53</code></pre>
 </div>
 </div>
 </div>
-<p>&nbsp;</p>
 <p>The graph above shows the overall acoustic spaces, in which the sound closest to the space centroid is highlighted. The highlighted sound is selected as the template and can be used to detect similar sound events. The function <code>get_templates()</code> can also select several templates. This can be helpful when working with sounds that are just moderately stereotyped. This is done by dividing the acoustic space into sub-spaces defined as equal-size slices of a circle centered at the centroid of the acoustic space:</p>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold">
@@ -2398,7 +2382,7 @@ loaded via a namespace (and not attached):
 [41] magrittr_2.0.3     utf8_1.2.4         e1071_1.7-16       scales_1.3.0      
 [45] backports_1.5.0    shinyBS_0.61.1     rmarkdown_2.28     Sim.DiffProc_4.9  
 [49] signal_1.8-1       igraph_2.0.3       gridExtra_2.3      pbapply_1.7-2     
-[53] evaluate_1.0.0     dtw_1.23-1         fftw_1.0-9         testthat_3.2.1.1  
+[53] evaluate_1.0.1     dtw_1.23-1         fftw_1.0-9         testthat_3.2.1.1  
 [57] viridisLite_0.4.2  rlang_1.1.4        Rcpp_1.0.13        glue_1.8.0        
 [61] DBI_1.2.3          rstudioapi_0.16.0  jsonlite_1.8.9     R6_2.5.1          
 [65] soundgen_2.6.3     units_0.8-5       </code></pre>
